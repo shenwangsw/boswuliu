@@ -278,7 +278,6 @@ body.default .login-bd .bd-inner .inner-wrap .lg-zone .lg-box .lg-label h4 {
 }
 .login-bd .bd-inner .inner-wrap .lg-zone .lg-box .enter a.supplier {
 	background-color: #1da02b;
-    margin-left: 111px;
 }
 .login-bd .bd-inner .inner-wrap .lg-poster {
 	height:541px;
@@ -319,4 +318,10 @@ body.default .login-bd .bd-inner .inner-wrap .lg-zone .lg-box .lg-label h4 {
 	color:#999;
 	font-size:12px;
 	margin-bottom:50px
+}
+.code{
+	float: left;
+	height: 40px;
+	width: 115px;
+	background-size: 100% 100%;
 }

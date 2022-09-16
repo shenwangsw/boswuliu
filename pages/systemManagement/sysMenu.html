@@ -118,12 +118,46 @@
 			</table>
 		</div>
 		</form>
+		<div id="ApartAge"></div>
 	</div>
 </div>
 <script type="text/javascript" src="../../custom/jquery.min.js"></script>
 <script type="text/javascript" src="../../layer/layer.js"></script>
 <script type="text/javascript" src="../../layui/layui.js"></script>
 <script type="text/javascript">
+	
+	layui.use(['laypage', 'layer'], function(){
+		  var laypage = layui.laypage
+		  ,layer = layui.layer;
+		  
+	   //完整功能
+	     laypage.render({
+	       elem: 'ApartAge'
+	       ,count: 6 //条数
+		   ,limit:6//每页的数据量
+	       ,layout: ['count', 'prev', 'page', 'next', 'limit', 'refresh', 'skip']
+	       ,jump: function(obj){
+	         console.log(obj)
+	       }
+	     });
+		
+		//调用分页
+		  laypage.render({
+		    count: data.length
+		    ,jump: function(obj){
+		      //模拟渲染
+		      document.getElementById('biuuu_city_list').innerHTML = function(){
+		        var arr = []
+		        ,thisData = data.concat().splice(obj.curr*obj.limit - obj.limit, obj.limit);
+		        layui.each(thisData, function(index, item){
+		          arr.push('<li>'+ item +'</li>');
+		        });
+		        return arr.join('');
+		      }();
+		    }
+		  });
+	});
+	
 //加载'form'模块，使checkbox、select、radio初始化
 layui.use('form', function(){
 
