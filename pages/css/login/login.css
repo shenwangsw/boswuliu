@@ -277,6 +277,7 @@ body.default .login-bd .bd-inner .inner-wrap .lg-zone .lg-box .lg-label h4 {
 	margin-right:9px
 }
 .login-bd .bd-inner .inner-wrap .lg-zone .lg-box .enter a.supplier {
+	margin-left: 30%;
 	background-color: #1da02b;
 }
 .login-bd .bd-inner .inner-wrap .lg-poster {
