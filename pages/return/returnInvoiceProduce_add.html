@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>生成返货单</title>
+	<link rel="stylesheet" type="text/css" href="../../layui/css/layui.css">
+</head>
+<body>
+<div class="layui-form">
+	<div class="layui-tab layui-tab-brief">
+		<ul class="layui-tab-title">
+			<li class="layui-this">生成返货单</li>
+		</ul>
+		<div class="layui-tab-content" style="height: 100px;">
+			<div class="layui-tab-item layui-show">
+				<table class="layui-table" style="width: 98%;margin: 1px auto;text-align: center;">
+					<tbody>
+					<tr>
+						<td class="layui-bg-gray" width="13%">工作单号</td>
+						<td width="20%">
+							<input type="text" name="title" placeholder="请输入工作单号" autocomplete="off" class="layui-input">
+						</td>
+						<td class="layui-bg-gray" width="13%">产品</td>
+						<td width="20%">
+							<input type="text" name="title" placeholder="请输入产品" autocomplete="off" class="layui-input">
+						</td>
+						<td class="layui-bg-gray" width="13%">实际件数</td>
+						<td width="20%">
+							<input type="text" name="title" placeholder="请输入实际件数" autocomplete="off" class="layui-input">
+						</td>
+					</tr>
+					<tr>
+						<td class="layui-bg-gray">结算方式</td>
+						<td>
+							<input type="text" name="title" placeholder="请输入结算方式" autocomplete="off" class="layui-input">
+						</td>
+						<td class="layui-bg-gray">品名</td>
+						<td>
+							<input type="text" name="title" placeholder="请输入品名" autocomplete="off" class="layui-input">
+						</td>
+						<td class="layui-bg-gray">原包装</td>
+						<td>
+							<input type="text" name="title" placeholder="请输入原包装" autocomplete="off" class="layui-input">
+						</td>
+					</tr>
+					<tr>
+						<td class="layui-bg-gray">实际重量</td>
+						<td>
+							<input type="text" name="title" placeholder="请输入实际重量" autocomplete="off" class="layui-input">
+						</td>
+						<td class="layui-bg-gray">到达地</td>
+						<td>
+							<input type="text" name="title" placeholder="请输入到达地" autocomplete="off" class="layui-input">
+						</td>
+						<td class="layui-bg-gray">体积</td>
+						<td>
+							<input type="text" name="title" placeholder="请输入体积" autocomplete="off" class="layui-input">
+						</td>
+					</tr>
+					<tr>
+						<td class="layui-bg-gray">配置要求</td>
+						<td>
+							<input type="text" name="title" placeholder="请输入配置要求" autocomplete="off" class="layui-input">
+						</td>
+						<td class="layui-bg-gray">送达时间</td>
+						<td>
+							<input type="text" name="title" placeholder="请输入送达时间" autocomplete="off" class="layui-input">
+						</td>
+						<td class="layui-bg-gray">委托人</td>
+						<td>
+							<input type="text" name="title" placeholder="请输入委托人" autocomplete="off" class="layui-input">
+						</td>
+					</tr>
+					<tr>
+						<td class="layui-bg-gray">发货单位</td>
+						<td>
+							<input type="text" name="title" placeholder="请输入发货单位" autocomplete="off" class="layui-input">
+						</td>
+						<td class="layui-bg-gray">发货传真</td>
+						<td>
+							<input type="text" name="title" placeholder="请输入发货传真" autocomplete="off" class="layui-input">
+						</td>
+						<td class="layui-bg-gray">发货地址</td>
+						<td>
+							<input type="text" name="title" placeholder="请输入发货地址" autocomplete="off" class="layui-input">
+						</td>
+					</tr>
+					<tr>
+						<td class="layui-bg-gray">发货电话</td>
+						<td>
+							<input type="text" name="title" placeholder="请输入发货电话" autocomplete="off" class="layui-input">
+						</td>
+						<td class="layui-bg-gray">发货手机</td>
+						<td>
+							<input type="text" name="title" placeholder="请输入发货手机" autocomplete="off" class="layui-input">
+						</td>
+						<td class="layui-bg-gray">发货单位编号</td>
+						<td>
+							<input type="text" name="title" placeholder="请输入发货单位编号" autocomplete="off" class="layui-input">
+						</td>
+					</tr>
+					<tr>
+						<td class="layui-bg-gray">发货邮编</td>
+						<td>
+							<input type="text" name="title" placeholder="请输入发货邮编" autocomplete="off" class="layui-input">
+						</td>
+						<td class="layui-bg-gray">收货人</td>
+						<td>
+							<input type="text" name="title" placeholder="请输入收货人" autocomplete="off" class="layui-input">
+						</td>
+						<td class="layui-bg-gray">收货单位</td>
+						<td><input type="text" name="title" placeholder="请输入收货单位" autocomplete="off" class="layui-input"></td>
+					</tr>
+					<tr>
+						<td class="layui-bg-gray">收货传真</td>
+						<td>
+							<input type="text" name="title" placeholder="请输入收货传真" autocomplete="off" class="layui-input">
+						</td>
+						<td class="layui-bg-gray">收货地址</td>
+						<td>
+							<input type="text" name="title" placeholder="请输入收货地址" autocomplete="off" class="layui-input">
+						</td>
+						<td class="layui-bg-gray">收货电话</td>
+						<td>
+							<input type="text" name="title" placeholder="请输入收货电话" autocomplete="off" class="layui-input">
+						</td>
+					</tr>
+					<tr>
+						<td class="layui-bg-gray">收货手机</td>
+						<td>
+							<input type="text" name="title" placeholder="请输入收货手机" autocomplete="off" class="layui-input">
+						</td>
+						<td class="layui-bg-gray">收货编号</td>
+						<td>
+							<input type="text" name="title" placeholder="请输入收货编号" autocomplete="off" class="layui-input">
+						</td>
+						<td class="layui-bg-gray">到达地编码</td>
+						<td>
+							<input type="text" name="title" placeholder="请输入到达地编码" autocomplete="off" class="layui-input">
+						</td>
+					</tr>
+					<tr>
+						<td class="layui-bg-gray">保险类型</td>
+						<td>
+							<select name="pro" lay-verify="required">
+								<option value="">全部</option>
+								<option value="1">类型一</option>
+								<option value="2">类型二</option>
+							</select>
+						</td>
+						<td class="layui-bg-gray">保险费</td>
+						<td>
+							<input type="text" name="title" placeholder="请输入保险费" autocomplete="off" class="layui-input">
+						</td>
+						<td class="layui-bg-gray">声明价值</td>
+						<td>
+							<input type="text" name="title" placeholder="请输入声明价值" autocomplete="off" class="layui-input">
+						</td>
+					</tr>
+					<tr>
+						<td class="layui-bg-gray">重要提示</td>
+						<td>
+							<input type="text" name="title" placeholder="请输入重要提示" autocomplete="off" class="layui-input">
+						</td>
+						<td class="layui-bg-gray">到付款</td>
+						<td>
+							<input type="text" name="title" placeholder="请输入到付款" autocomplete="off" class="layui-input">
+						</td>
+						<td class="layui-bg-gray">代收款</td>
+						<td>
+							<input type="text" name="title" placeholder="请输入代收款" autocomplete="off" class="layui-input">
+						</td>
+					</tr>
+					<tr>
+						<td class="layui-bg-gray">包装要求</td>
+						<td>
+							<input type="text" name="title" placeholder="请输入包装要求" autocomplete="off" class="layui-input">
+						</td>
+						<td class="layui-bg-gray">开单时间</td>
+						<td>
+							<input type="text" name="title" placeholder="请输入开单时间" autocomplete="off" class="layui-input">
+						</td>
+						<td class="layui-bg-gray">已打印</td>
+						<td>
+							<input type="radio" name="sex" value="1" title="是">
+							<input type="radio" name="sex" value="0" title="否" checked>
+						</td>
+					</tr>
+					<tr>
+						<td class="layui-bg-gray">客户单号</td>
+						<td>
+							<input type="text" name="title" placeholder="请输入客户单号" autocomplete="off" class="layui-input">
+						</td>
+						<td class="layui-bg-gray">计费重量</td>
+						<td>
+							<input type="text" name="title" placeholder="请输入计费重量" autocomplete="off" class="layui-input">
+						</td>
+						<td class="layui-bg-gray">开单人</td>
+						<td>
+							<input type="text" name="title" placeholder="请输入开单人" autocomplete="off" class="layui-input">
+						</td>
+					</tr>
+					<tr>
+						<td class="layui-bg-gray">操作单位</td>
+						<td>
+							<select name="pro" lay-verify="required">
+								<option value="">全部</option>
+								<option value="1">单位一</option>
+								<option value="2">单位二</option>
+							</select>
+						</td>
+						<td class="layui-bg-gray">取件单位</td>
+						<td>
+							<select name="pro" lay-verify="required">
+								<option value="">全部</option>
+								<option value="1">取件单位一</option>
+								<option value="2">取件单位二</option>
+							</select>
+						</td>
+						<td class="layui-bg-gray"></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td colspan="6">
+							<button class="layui-btn" style="background: #1da02b;">确定</button>
+							<button type="button" class="layui-btn layui-btn-primary">取消</button>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</div>
+
+		</div>
+	</div>
+
+</div>
+<script type="text/javascript" src="../../custom/jquery.min.js"></script>
+<script type="text/javascript" src="../../layui/layui.js"></script>
+<script type="text/javascript">
+
+	//加载'form'模块，使checkbox、select、radio初始化
+	layui.use('form', function(){
+
+	});
+
+	//注意：选项卡 依赖 element 模块，否则无法进行功能性操作
+	layui.use('element', function(){
+		var element = layui.element;
+
+		//…
+	});
+
+</script>
+</body>
+</html>

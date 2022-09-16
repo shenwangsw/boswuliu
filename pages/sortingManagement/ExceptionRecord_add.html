@@ -1,0 +1,92 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="utf-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1"> 
+    <title>新增异常记录</title>
+    <link rel="stylesheet" type="text/css" href="../../layui/css/layui.css">
+</head> 
+<body>
+	<form class="layui-form">
+	<table class="layui-table" style="width: 98%;margin: 1px auto;text-align: center;">
+	  	<tbody>
+		    <tr>
+		    	<td class="layui-bg-gray" width="14%">异常编号</td>
+		      	<td width="20%">
+					<input type="text" name="title" placeholder="请输入异常编号" autocomplete="off" class="layui-input" value="" disabled>
+		      	</td>
+		      	<td class="layui-bg-gray" width="12%">异常类型</td>
+		      	<td width="20%">
+					<select name="city" lay-verify="required">
+						<option value=""></option>
+						<option value="0">有单无货</option>
+						<option value="1">有货无单</option>
+					</select>
+		      	</td>
+		      	<td class="layui-bg-gray" width="14%">状态</td>
+		      	<td width="20%">
+					<select name="city" lay-verify="required">
+						<option value=""></option>
+						<option value="0">未处理</option>
+						<option value="1">已处理</option>
+					</select>
+		      	</td>
+		    </tr>
+			<tr>
+				<td class="layui-bg-gray" width="13%">异常说明</td>
+				<td colspan="5">
+					<input type="text" name="title" placeholder="请输入异常说明" autocomplete="off" class="layui-input" value="">
+				</td>
+			</tr>
+		    <tr>
+		      	<td class="layui-bg-gray">单号</td>
+		      	<td>
+					<input type="text" name="title" placeholder="请输入单号" autocomplete="off" class="layui-input" value="">
+				</td>
+		      	<td class="layui-bg-gray">合包号</td>
+		      	<td>
+					<input type="text" name="title" placeholder="请输入合包号" autocomplete="off" class="layui-input" value="">
+				</td>
+		      	<td class="layui-bg-gray">交接单号</td>
+		      	<td>
+					<input type="text" name="title" placeholder="请输入交接单号" autocomplete="off" class="layui-input" value="">
+				</td>
+		    </tr>
+			<tr>
+				<td class="layui-bg-gray">对冲异常编号</td>
+				<td>
+					<input type="text" name="title" placeholder="对冲异常编号" autocomplete="off" class="layui-input" value="">
+				</td>
+				<td class="layui-bg-gray">异常记录人</td>
+				<td>
+					<input type="text" name="title" placeholder="异常记录人" autocomplete="off" class="layui-input" value="">
+				</td>
+				<td class="layui-bg-gray">异常记录时间</td>
+				<td>
+					<input type="text" name="title" placeholder="异常记录时间" autocomplete="off" class="layui-input" value="">
+				</td>
+			</tr>
+			<tr>
+				<td colspan="6">
+					<button class="layui-btn" style="background: #1da02b;">确定</button>
+					<button type="button" class="layui-btn layui-btn-primary">取消</button>
+				</td>
+			</tr>
+	  	</tbody>
+	</table>
+
+	</form>
+	<script type="text/javascript" src="../../custom/jquery.min.js"></script>
+	<script type="text/javascript" src="../../layui/layui.js"></script>
+	<script type="text/javascript">
+        
+        //加载'form'模块，使checkbox、select、radio初始化
+        layui.use('form', function(){
+           
+        });
+      
+    </script>
+</body> 
+</html>
+    
+

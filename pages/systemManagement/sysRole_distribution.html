@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>角色</title>
+<link rel="stylesheet" type="text/css" href="../../layui/css/layui.css">
+<link rel="stylesheet" type="text/css" href="../css/page.css">
+</head>
+<body>
+<!-- 外部整体 -->
+<div class="external">
+	<!-- 标题 -->
+	<p class="ptitle">分配权限</p>
+	<!-- 操作区域 -->
+	
+		<!-- 向上间距 -->
+		<div style="height: 10px;"></div>
+		<form class="layui-form" action="">
+		<div class="operation">
+			<!-- 操作按扭组 -->
+			<div class="layui-form-item" style="padding-left: 11px;height: 30px;">
+				<div class="layui-inline">
+					<button type="button" class="layui-btn layui-btn-small btnQuery" id="opAdd">保存</button>
+					<button type="button" class="layui-btn layui-btn-small btnOther" id="opBack">返回</button>
+				</div>
+			</div>
+			<!-- 数据表格 -->
+		</div>
+		<table class="layui-table" style="width: 50%;margin: 1px auto;text-align: left;margin-top: 5px;">
+		  	<tbody>
+				<!-- 系统管理 开始 -->
+				<tr>
+			    	<td class="layui-bg-gray">
+						<input type="checkbox" name="" lay-skin="primary" title="系统管理"> 
+					</td>
+			    </tr>
+			    <tr>
+			    	<td class="layui-bg-gray">
+						<span style="padding-left:80px;"><span>
+						<input type="checkbox" name="" lay-skin="primary" title="单位管理">
+					</td>
+			    </tr>
+				<tr>
+			    	<td class="layui-bg-gray">
+						<span style="padding-left:80px;"><span>
+						<input type="checkbox" name="" lay-skin="primary" title="员工管理">
+					</td>
+			    </tr>
+				<tr>
+			    	<td class="layui-bg-gray">
+						<span style="padding-left:80px;"><span>
+						<input type="checkbox" name="" lay-skin="primary" title="栏目管理">
+					</td>
+			    </tr>
+				<tr>
+			    	<td class="layui-bg-gray">
+						<span style="padding-left:80px;"><span>
+						<input type="checkbox" name="" lay-skin="primary" title="角色管理">
+					</td>
+			    </tr>
+				<!-- 系统管理 结束 -->
+				<!-- 基础数据 开始 -->
+				<tr>
+			    	<td class="layui-bg-gray">
+						<input type="checkbox" name="" lay-skin="primary" title="收派标准"> 
+					</td>
+			    </tr>
+			    <tr>
+			    	<td class="layui-bg-gray">
+						<span style="padding-left:80px;"><span>
+						<input type="checkbox" name="" lay-skin="primary" title="基础档案">
+					</td>
+			    </tr>
+				<tr>
+			    	<td class="layui-bg-gray">
+						<span style="padding-left:80px;"><span>
+						<input type="checkbox" name="" lay-skin="primary" title="班车设置">
+					</td>
+			    </tr>
+				<tr>
+			    	<td class="layui-bg-gray">
+						<span style="padding-left:80px;"><span>
+						<input type="checkbox" name="" lay-skin="primary" title="取派员设置">
+					</td>
+			    </tr>
+				<tr>
+			    	<td class="layui-bg-gray">
+						<span style="padding-left:80px;"><span>
+						<input type="checkbox" name="" lay-skin="primary" title="区域设置">
+					</td>
+			    </tr>
+				<tr>
+			    	<td class="layui-bg-gray">
+						<span style="padding-left:80px;"><span>
+						<input type="checkbox" name="" lay-skin="primary" title="管理分区">
+					</td>
+			    </tr>
+				<tr>
+			    	<td class="layui-bg-gray">
+						<span style="padding-left:80px;"><span>
+						<input type="checkbox" name="" lay-skin="primary" title="管理定区">
+					</td>
+			    </tr>
+				<tr>
+			    	<td class="layui-bg-gray">
+						<span style="padding-left:80px;"><span>
+						<input type="checkbox" name="" lay-skin="primary" title="收派时间管理">
+					</td>
+			    </tr>
+				<!-- 基础数据 结束 -->
+				
+				<!-- 接着把静态页面里所有的模型写上 -->
+				
+		  	</tbody>
+		</table>
+		</form>
+	</div>
+</div>
+<script type="text/javascript" src="../../custom/jquery.min.js"></script>
+<script type="text/javascript" src="../../layer/layer.js"></script>
+<script type="text/javascript" src="../../layui/layui.js"></script>
+<script type="text/javascript">
+//加载'form'模块，使checkbox、select、radio初始化
+layui.use('form', function(){
+
+});
+
+//加载'table'组件
+layui.use('table', function(){
+  var table = layui.table;
+});
+
+//加载'laydate'时间组件
+layui.use('laydate', function(){
+  var laydate = layui.laydate;
+  //执行一个laydate实例
+  laydate.render({
+    elem: '#opTime' //指定元素
+  });
+});
+
+$(function(){
+	//显示、隐藏剩余的查询条件
+	$('#btnMore').click(function(){
+		$("#hQuery").toggle();
+	});
+
+	//新增
+	$('#opAdd').click(function(){
+		//页面层
+		layer.open({
+		  title: ['新增', 'color:#fff;background:#1da02b;'],
+		  type: 2,
+		  //skin: 'layui-layer-rim', //加上边框
+		  area: ['930px', '450px'], //宽高
+		  content: 'businessAcceptance_add.html'
+		});
+	});
+
+	//编辑
+	$('#opUpdate').click(function(){
+		//页面层
+		layer.open({
+		  title: ['编辑', 'color:#fff;background:#1da02b;'],
+		  type: 2,
+		  //skin: 'layui-layer-rim', //加上边框
+		  area: ['900px', '340px'], //宽高
+		  content: 'dispatchingPersonnelSet_add.html'
+		});
+	});
+
+	//删除
+	$('#opDelete').click(function(){
+		//询问框
+		layer.confirm('确定是否删除？', {
+		  	btn: ['是','否'] //按钮
+		}, function(){
+		  	layer.msg('删除成功', {icon: 1});
+		}, function(){
+
+		});
+	});
+	
+	//返回
+	$('#opBack').click(function(){
+		history.back();
+	});
+	
+	
+
+});
+
+</script>
+
+</body>
+</html>

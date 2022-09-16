@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>包装材料管理</title>
+<link rel="stylesheet" type="text/css" href="../../layui/css/layui.css">
+<link rel="stylesheet" type="text/css" href="../css/page.css">
+</head>
+<body>
+<!-- 外部整体 -->
+<div class="external">
+	<!-- 标题 -->
+	<p class="ptitle">包装材料管理</p>
+	<!-- 操作区域 -->
+	<div class="operation">
+		<!-- 向上间距 -->
+		<div style="height: 10px;"></div>
+		<form class="layui-form" action="">
+			<div class="layui-form-item">
+
+				<div class="layui-inline">
+				    <label class="layui-form-label">物品编码:</label>
+				    <div class="layui-input-block" style="width: 150px;">
+				    	<input type="text" name="title" placeholder="请输入物品编码" autocomplete="off" class="layui-input">
+				    </div>
+			    </div>
+
+			    <div class="layui-inline">
+				    <label class="layui-form-label" >物品名称:</label>
+				    <div class="layui-input-block" style="width: 150px;">
+						<input type="text" name="title" placeholder="请输入物品名称" autocomplete="off" class="layui-input">
+					</div>
+			    </div>
+
+				<!-- 查询按钮组 -->
+			    <div class="layui-inline">
+					<button type="button" class="layui-btn btnQuery">
+						<i class="layui-icon">&#xe615;</i> 查询
+					</button>
+
+					<button type="button" class="layui-btn btnOther">
+						<i class="layui-icon">&#x1002;</i> 重置
+					</button>
+
+					<button id="btnMore" type="button" class="layui-btn btnOther">
+						<i class="layui-icon">&#xe671;</i>更多
+					</button>
+				</div>
+
+			</div>
+
+			<!-- 隐藏其它查询条件 -->
+			<div id="hQuery" style="display: none;">
+				<div class="layui-form-item">
+					<div class="layui-inline">
+						<label class="layui-form-label">计划价格:</label>
+						<div class="layui-input-block" style="width: 150px;">
+							<input type="text" name="title" placeholder="请输入计划价格" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+
+					<div class="layui-inline">
+						<label class="layui-form-label">规格:</label>
+						<div class="layui-input-block" style="width: 150px;">
+							<input type="text" name="title" placeholder="请输入规格" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+
+					<div class="layui-inline">
+						<label class="layui-form-label">类型</label>
+						<div class="layui-input-block" style="width: 150px;">
+							<input type="text" name="title" placeholder="请输入类型" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+
+					<div class="layui-inline">
+						<label class="layui-form-label">状态</label>
+						<div class="layui-input-block" style="width: 150px;">
+							<select name="pro" lay-verify="required">
+								<option value="0">全部</option>
+								<option value="1">正常</option>
+								<option value="-1">作废</option>
+							</select>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+			<!-- 操作按扭组 -->
+			<div class="layui-form-item" style="padding-left: 11px;height: 30px;">
+				<div class="layui-inline">
+					<button type="button" class="layui-btn layui-btn-small btnQuery" id="add">新增</button>
+					<button type="button" class="layui-btn layui-btn-small btnOther" id="edit">修改</button>
+					<button type="button" class="layui-btn layui-btn-small btnOther" id="delete">作废</button>
+				</div>
+			</div>
+
+			<!-- 数据表格 -->
+			<table class="layui-table">
+				<colgroup>
+					<col width="50">
+				    <col width="60">
+				    <col width="120">
+				    <col width="150">
+				    <col width="120">
+				    <col width="110">
+				    <col width="110">
+				    <col width="110">
+				    <col>
+			  	</colgroup>
+			  	<thead>
+				    <tr>
+				    	<th><input type="checkbox" name="check" lay-skin="primary"></th>
+				    	<th>序号</th>
+				      	<th>物品编码</th>
+				      	<th>物品名称</th>
+				      	<th>计划价格</th>
+					  	<th>规格</th>
+					  	<th>类型</th>
+					  	<th>计量单位</th>
+					  	<th>状态</th>
+				    </tr>
+			  	</thead>
+			  	<tbody>
+				    <tr>
+				      	<td><input type="checkbox" name="check" lay-skin="primary"></td>
+				      	<td>1</td>
+				      	<td>WP1001</td>
+				      	<td>IPHONE7</td>
+						<td>5888</td>
+				      	<td>部</td>
+				      	<td>电子设备</td>
+				      	<td>支</td>
+				      	<td>正常</td>
+				    </tr>
+			  	</tbody>
+			</table>
+		</div>
+		</form>
+	</div>
+</div>
+<script type="text/javascript" src="../../custom/jquery.min.js"></script>
+<script type="text/javascript" src="../../layer/layer.js"></script>
+<script type="text/javascript" src="../../layui/layui.js"></script>
+<script type="text/javascript">
+//加载'form'模块，使checkbox、select、radio初始化
+layui.use('form', function(){
+
+});
+
+//加载'table'组件
+layui.use('table', function(){
+  var table = layui.table;
+});
+
+//加载'laydate'时间组件
+layui.use('laydate', function(){
+  var laydate = layui.laydate;
+  //执行一个laydate实例
+  laydate.render({
+    elem: '#opTime' //指定元素
+  });
+});
+
+$(function(){
+	//显示、隐藏剩余的查询条件
+	$('#btnMore').click(function(){
+		$("#hQuery").toggle();
+	});
+
+
+	//新增
+	$('#opAdd').click(function(){
+		//页面层
+		layer.open({
+			title: ['新增', 'color:#fff;background:#1da02b;'],
+			type: 2,
+			//skin: 'layui-layer-rim', //加上边框
+			area: ['650px', '430px'], //宽高
+			content: 'packagingMaterialManagement_add.html'
+		});
+	});
+
+
+	//新增
+	$('#add').click(function(){
+		//页面层
+		layer.open({
+			title: ['新增', 'color:#fff;background:#1da02b;'],
+			type: 2,
+			//skin: 'layui-layer-rim', //加上边框
+			area: ['950px', '360px'], //宽高
+			content: 'packagingMaterialManagement_add.html'
+		});
+	});
+
+	//修改
+	$('#edit').click(function(){
+		//页面层
+		layer.open({
+			title: ['修改', 'color:#fff;background:#1da02b;'],
+			type: 2,
+			//skin: 'layui-layer-rim', //加上边框
+			area: ['950px', '360px'], //宽高
+			content: 'packagingMaterialManagement_add.html'
+		});
+	});
+
+	//作废
+
+
+});
+
+</script>
+
+</body>
+</html>

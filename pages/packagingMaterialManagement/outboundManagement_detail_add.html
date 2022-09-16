@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>出库管理</title>
+	<link rel="stylesheet" type="text/css" href="../../layui/css/layui.css">
+</head>
+<body>
+<div class="layui-form">
+	<table class="layui-table" style="width: 98%;margin: 1px auto;text-align: center;">
+		<tbody>
+		<tr>
+			<td class="layui-bg-gray" width="17%">物品编码</td>
+			<td width="33%">
+				<input type="text" name="title" placeholder="请输入物品编码" autocomplete="off" class="layui-input">
+			</td>
+			<td class="layui-bg-gray" width="17%">货物名称</td>
+			<td width="33%">
+				<input type="text" name="title" placeholder="根据货物编码填充" autocomplete="off" class="layui-input">
+			</td>
+		</tr>
+		<tr>
+			<td class="layui-bg-gray" width="17%">出库数量</td>
+			<td width="33%">
+				<input type="text" name="title" placeholder="请输入出库数量" autocomplete="off" class="layui-input">
+			</td>
+			<td class="layui-bg-gray">实际数量</td>
+			<td >
+				<input type="text" name="title" placeholder="默认与出库数量一致" autocomplete="off" class="layui-input">
+			</td>
+		</tr>
+		<tr>
+			<td class="layui-bg-gray">计划价格</td>
+			<td>
+				<input type="text" name="title" placeholder="根据货物编码填充" autocomplete="off" class="layui-input">
+			</td>
+			<td class="layui-bg-gray">规格</td>
+			<td>
+				<input type="text" name="title" placeholder="根据货物编码填充" autocomplete="off" class="layui-input">
+			</td>
+		</tr>
+		<tr>
+			<td class="layui-bg-gray">类型</td>
+			<td>
+				<input type="text" name="title" placeholder="根据货物编码填充" autocomplete="off" class="layui-input">
+			</td>
+			<td class="layui-bg-gray">状态</td>
+			<td>
+				<input type="text" name="title" placeholder="系统默认正常状态" autocomplete="off" class="layui-input">
+			</td>
+		</tr>
+		<tr>
+			<td colspan="6">
+				<button class="layui-btn" style="background: #1da02b;">确定</button>
+				<button type="button" class="layui-btn layui-btn-primary">取消</button>
+			</td>
+		</tr>
+
+		</tbody>
+	</table>
+
+</div>
+<script type="text/javascript" src="../../custom/jquery.min.js"></script>
+<script type="text/javascript" src="../../layui/layui.js"></script>
+<script type="text/javascript">
+
+	//加载'form'模块，使checkbox、select、radio初始化
+	layui.use('form', function(){
+
+	});
+
+	//注意：选项卡 依赖 element 模块，否则无法进行功能性操作
+	layui.use('element', function(){
+		var element = layui.element;
+
+		//…
+	});
+
+</script>
+</body>
+</html>

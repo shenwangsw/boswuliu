@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>新增出库交接单</title>
+    <link rel="stylesheet" type="text/css" href="../../layui/css/layui.css">
+    <link rel="stylesheet" type="text/css" href="../css/page.css">
+</head>
+<body>
+<div class="external">
+    <!-- 操作按扭组 -->
+    <div class="layui-form-item" style="padding-left: 11px;height: 30px;">
+        <div class="layui-inline">
+            <button type="button" class="layui-btn layui-btn-small btnQuery" id="opDetailAdd">新增明细行</button>
+            <button type="button" class="layui-btn layui-btn-small btnQuery" id="opDetailDelete">删除明细行</button>
+            <button type="button" class="layui-btn layui-btn-small btnOther" id="opSave">保存</button>
+            <button type="button" class="layui-btn layui-btn-small btnOther" id="opClose">关闭</button>
+        </div>
+    </div>
+</div>
+<form class="layui-form">
+    <table class="layui-table" style="width: 98%;margin: 1px auto;text-align: center;">
+        <tbody>
+        <tr>
+            <td class="layui-bg-gray" width="13%">交接单类型</td>
+            <td width="20%">
+                <select name="city" lay-verify="required">
+                    <option value=""></option>
+                    <option value="0">市内物流交接单</option>
+                    <option value="1">长途物流交接单</option>
+                    <option value="1">派送清单</option>
+                    <option value="1">发货交接单</option>
+                </select>
+            </td>
+            <td class="layui-bg-gray" width="13%">线路资源</td>
+            <td width="20%">
+                <input type="text" name="title" placeholder="请输入线路资源" autocomplete="off" class="layui-input" value="">
+            </td>
+            <td class="layui-bg-gray" width="14%">物流方向</td>
+            <td width="20%">
+                <input type="text" name="title" placeholder="请输入物流方向" autocomplete="off" class="layui-input" value="" disabled>
+            </td>
+        </tr>
+        <tr>
+            <td class="layui-bg-gray">运输方式</td>
+            <td>
+                <input type="text" name="title" placeholder="请输入运输方式" autocomplete="off" class="layui-input" value="">
+            </td>
+            <td class="layui-bg-gray">承运商</td>
+            <td>
+                <input type="text" name="title" placeholder="请输入承运商" autocomplete="off" class="layui-input" value="">
+            </td>
+            <td class="layui-bg-gray">接货人</td>
+            <td>
+                <input type="text" name="title" placeholder="请输入接货人" autocomplete="off" class="layui-input" value="">
+            </td>
+        </tr>
+        <tr>
+
+            <td class="layui-bg-gray">交货人</td>
+            <td>
+                <input type="text" name="title" placeholder="请输入交货人" autocomplete="off" class="layui-input" value="">
+            </td>
+            <td class="layui-bg-gray">交货时间</td>
+            <td>
+                <input type="text" name="title" placeholder="请输入交货时间" autocomplete="off" class="layui-input" value="">
+            </td>
+            <td class="layui-bg-gray">交货单位</td>
+            <td>
+                <input type="text" name="title" placeholder="请输入交货单位" autocomplete="off" class="layui-input" value="">
+            </td>
+        </tr>
+
+        </tbody>
+    </table>
+    <table class="layui-table" style="width: 98%;margin: 5px auto;text-align: center;">
+        <colgroup>
+            <col width="60">
+            <col width="100">
+            <col width="100">
+            <col width="90">
+            <col width="90">
+            <col width="120">
+            <col width="120">
+            <col width="120">
+            <col>
+        </colgroup>
+        <thead>
+        <tr>
+            <th>序号</th>
+            <th>单号</th>
+            <th>合包号</th>
+            <th>重量</th>
+            <th>体积</th>
+            <th>扫描时间</th>
+            <th>扫描</th>
+            <th>下环节入库</th>
+            <th>二次入库</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>1</td>
+            <td>
+                <input type="text" name="title" placeholder="单号" autocomplete="off" class="layui-input" value="">
+            </td>
+            <td>
+                <input type="text" name="title" placeholder="合包号" autocomplete="off" class="layui-input" value="">
+            </td>
+            <td>
+                <input type="text" name="title" placeholder="重量" autocomplete="off" class="layui-input" value="">
+            </td>
+            <td>
+                <input type="text" name="title" placeholder="体积" autocomplete="off" class="layui-input" value="">
+            </td>
+            <td>
+                <input type="text" name="title" placeholder="扫描时间" autocomplete="off" class="layui-input" value="">
+            </td>
+            <td>
+                <select name="city" lay-verify="required">
+                    <option value=""></option>
+                    <option value="0">否</option>
+                    <option value="1">是</option>
+                </select>
+            </td>
+            <td>
+                <select name="city" lay-verify="required">
+                    <option value=""></option>
+                    <option value="0">否</option>
+                    <option value="1">是</option>
+                </select>
+            </td>
+            <td>
+                <select name="city" lay-verify="required">
+                    <option value=""></option>
+                    <option value="0">否</option>
+                    <option value="1">是</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>
+                <input type="text" name="title" placeholder="单号" autocomplete="off" class="layui-input" value="">
+            </td>
+            <td>
+                <input type="text" name="title" placeholder="合包号" autocomplete="off" class="layui-input" value="">
+            </td>
+            <td>
+                <input type="text" name="title" placeholder="重量" autocomplete="off" class="layui-input" value="">
+            </td>
+            <td>
+                <input type="text" name="title" placeholder="体积" autocomplete="off" class="layui-input" value="">
+            </td>
+            <td>
+                <input type="text" name="title" placeholder="扫描时间" autocomplete="off" class="layui-input" value="">
+            </td>
+            <td>
+                <select name="city" lay-verify="required">
+                    <option value=""></option>
+                    <option value="0">否</option>
+                    <option value="1">是</option>
+                </select>
+            </td>
+            <td>
+                <select name="city" lay-verify="required">
+                    <option value=""></option>
+                    <option value="0">否</option>
+                    <option value="1">是</option>
+                </select>
+            </td>
+            <td>
+                <select name="city" lay-verify="required">
+                    <option value=""></option>
+                    <option value="0">否</option>
+                    <option value="1">是</option>
+                </select>
+            </td>
+        </tr>
+
+        </tbody>
+    </table>
+</form>
+<script type="text/javascript" src="../../custom/jquery.min.js"></script>
+<script type="text/javascript" src="../../layui/layui.js"></script>
+<script type="text/javascript">
+
+    //加载'form'模块，使checkbox、select、radio初始化
+    layui.use('form', function(){
+
+    });
+
+</script>
+</body>
+</html>
+
+

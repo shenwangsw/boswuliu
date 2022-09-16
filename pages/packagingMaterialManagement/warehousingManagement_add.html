@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>包装材料管理</title>
+	<link rel="stylesheet" type="text/css" href="../../layui/css/layui.css">
+</head>
+<body>
+<div class="layui-form">
+	<table class="layui-table" style="width: 98%;margin: 1px auto;text-align: center;">
+		<tbody>
+		<tr>
+			<td class="layui-bg-gray" width="17%">入库类型</td>
+			<td width="33%">
+				<select name="pro" lay-verify="required">
+					<option value="0">全部</option>
+					<option value="1">期初库存</option>
+					<option value="2">调拨入库</option>
+					<option value="3">下发入库</option>
+					<option value="4">盘盈调整</option>
+				</select>
+			</td>
+			<td class="layui-bg-gray" width="17%">运输单号</td>
+			<td width="33%">
+				<input type="text" name="title" placeholder="请输入运输单号" autocomplete="off" class="layui-input">
+			</td>
+		</tr>
+		<tr>
+			<td class="layui-bg-gray">所属单位</td>
+			<td >
+				<input type="text" name="title" placeholder="默认登录人所在单位" autocomplete="off" class="layui-input">
+			</td>
+			<td class="layui-bg-gray">开单人工号</td>
+			<td>
+				<input type="text" name="title" placeholder="默认登录人工号" autocomplete="off" class="layui-input">
+			</td>
+		</tr>
+		<tr>
+			<td class="layui-bg-gray">开单人姓名</td>
+			<td>
+				<input type="text" name="title" placeholder="默认开单人姓名" autocomplete="off" class="layui-input">
+			</td>
+			<td class="layui-bg-gray">开单时间</td>
+			<td>
+				<input type="text" name="title" placeholder="默认服务器时间" autocomplete="off" class="layui-input">
+			</td>
+		</tr>
+		<tr>
+			<td class="layui-bg-gray">备注</td>
+			<td colspan="3">
+				<textarea name="desc" placeholder="请输入备注" class="layui-textarea"></textarea>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="6">
+				<button class="layui-btn" style="background: #1da02b;">确定</button>
+				<button type="button" class="layui-btn layui-btn-primary">取消</button>
+			</td>
+		</tr>
+
+		</tbody>
+	</table>
+
+</div>
+<script type="text/javascript" src="../../custom/jquery.min.js"></script>
+<script type="text/javascript" src="../../layui/layui.js"></script>
+<script type="text/javascript">
+
+	//加载'form'模块，使checkbox、select、radio初始化
+	layui.use('form', function(){
+
+	});
+
+	//注意：选项卡 依赖 element 模块，否则无法进行功能性操作
+	layui.use('element', function(){
+		var element = layui.element;
+
+		//…
+	});
+
+</script>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="utf-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1"> 
+    <title>管理分区</title> 
+    <link rel="stylesheet" type="text/css" href="../../layui/css/layui.css">
+</head> 
+<body>
+	<form class="layui-form">
+	<table class="layui-table" style="width: 98%;margin: 1px auto;text-align: center;">
+	  	<tbody>
+		    <tr>
+		    	<td class="layui-bg-gray" width="10%">员工工号</td>
+		      	<td width="23%">
+      				<select name="city" lay-verify="required">
+			        	<option value=""></option>
+			        	<option value="0">全部</option>
+			        	<option value="1">1001</option>
+			        	<option value="2">1002</option>
+			        	<option value="3">1003</option>
+			      	</select>
+		      	</td>
+		      	<td class="layui-bg-gray" width="10%">员工名称</td>
+		      	<td width="23%">
+					<input type="text" name="title" placeholder="请输入员工名称" autocomplete="off" class="layui-input" value="张三" disabled>
+		      	</td>
+		      	<td class="layui-bg-gray" width="10%">手机号码</td>
+		      	<td width="23%">
+					<input type="text" name="title" placeholder="请输入手机号码" autocomplete="off" class="layui-input" value="18612345678">
+		      	</td>
+		    </tr>
+		    <tr>
+		      	<td class="layui-bg-gray">取派员类型</td>
+		      	<td>
+					<select name="city" lay-verify="required">
+			        	<option value=""></option>
+			        	<option value="0">全部</option>
+			        	<option value="1">小件员</option>
+			        	<option value="2">司机</option>
+			      	</select>
+		      	</td>
+		      	<td class="layui-bg-gray">是否使用PDA</td>
+		      	<td>
+					<input type="radio" name="pad" value="1" title="有" checked>
+      				<input type="radio" name="pad" value="0" title="无">
+		      	</td>
+		      	<td class="layui-bg-gray">收派标准（公斤）</td>
+		      	<td>
+					<select name="city" lay-verify="required">
+			        	<option value=""></option>
+			        	<option value="1">0-50</option>
+			        	<option value="2">0-50</option>
+			      	</select>
+		      	</td>
+		      	
+		    </tr>
+		    <tr>
+		    	<td class="layui-bg-gray">收派标准（长度）</td>
+		      	<td>
+					<select name="city" lay-verify="required">
+			        	<option value=""></option>
+			        	<option value="1">1</option>
+			        	<option value="2">2</option>
+			      	</select>
+		      	</td>
+		      	<td class="layui-bg-gray">车型</td>
+		      	<td>
+					<input type="text" name="title" placeholder="请输入车型" autocomplete="off" class="layui-input">
+		      	</td>
+		      	<td class="layui-bg-gray">车牌号</td>
+		      	<td>
+					<input type="text" name="title" placeholder="请输入车牌号" autocomplete="off" class="layui-input">
+		      	</td>
+		    </tr>
+		    <tr>
+		      	<td class="layui-bg-gray">作废标记</td>
+		      	<td>
+					<input type="radio" name="pad" value="1" title="是" checked>
+      				<input type="radio" name="pad" value="0" title="否">
+		      	</td>
+		      	<td class="layui-bg-gray">所属单位</td>
+		      	<td>
+					<input type="text" name="title" placeholder="请输入所属单位" autocomplete="off" class="layui-input" value="">
+		      	</td>
+		      	<td class="layui-bg-gray"></td>
+		      	<td>
+
+		      	</td>
+		    </tr>
+		    <tr>
+		      	<td colspan="6">
+					<button class="layui-btn" style="background: #1da02b;">确定</button>
+					<button type="button" class="layui-btn layui-btn-primary">取消</button>
+		      	</td>
+		    </tr>
+	  	</tbody>
+	</table>
+	</form>
+	<script type="text/javascript" src="../../custom/jquery.min.js"></script>
+	<script type="text/javascript" src="../../layui/layui.js"></script>
+	<script type="text/javascript">
+        
+        //加载'form'模块，使checkbox、select、radio初始化
+        layui.use('form', function(){
+           
+        });
+      
+    </script>
+</body> 
+</html>
+    
+

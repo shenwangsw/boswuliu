@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>分配</title>
+	<link rel="stylesheet" type="text/css" href="../../layui/css/layui.css">
+</head>
+<body>
+<div class="layui-form">
+	<div class="layui-tab layui-tab-brief">
+		<ul class="layui-tab-title">
+			<li class="layui-this">新增返货申请</li>
+		</ul>
+		<div class="layui-tab-content" style="height: 100px;">
+			<div class="layui-tab-item layui-show">
+				<table class="layui-table" style="width: 98%;margin: 1px auto;text-align: center;">
+					<tbody>
+					<tr>
+						<td class="layui-bg-gray" width="13%">申请单号</td>
+						<td width="20%">
+							<input type="text" name="title" placeholder="请输入申请单号" autocomplete="off" class="layui-input">
+						</td>
+						<td class="layui-bg-gray" width="13%">工作单号</td>
+						<td width="20%">
+							<input type="text" name="title" placeholder="请输入工作单号" autocomplete="off" class="layui-input">
+						</td>
+						<td class="layui-bg-gray" width="13%">返货类型</td>
+						<td width="20%">
+							<select name="city" lay-verify="">
+								<option value="">请选择原因</option>
+								<option value="010">原因一</option>
+								<option value="021">原因二</option>
+								<option value="0571">原因三</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td class="layui-bg-gray">申请备注</td>
+						<td colspan="5">
+							<input type="text" name="title" placeholder="请输入申请备注" autocomplete="off" class="layui-input">
+						</td>
+					</tr>
+					<tr>
+						<td class="layui-bg-gray">破损丢失件数</td>
+						<td>
+							<input type="text" name="title" placeholder="请输入破损丢失件数" autocomplete="off" class="layui-input">
+						</td>
+						<td class="layui-bg-gray">进港时间</td>
+						<td>
+							<input type="text" name="title" placeholder="请输入进港时间" autocomplete="off" class="layui-input">
+						</td>
+						<td class="layui-bg-gray">接收单位</td>
+						<td>
+							<input type="text" name="title" placeholder="请输入接收单位" autocomplete="off" class="layui-input">
+						</td>
+					</tr>
+					<tr>
+						<td class="layui-bg-gray">作废标志</td>
+						<td>
+							<input type="radio" name="sex" value="1" title="是">
+							<input type="radio" name="sex" value="0" title="否" checked>
+						</td>
+						<td class="layui-bg-gray">返货单位</td>
+						<td>
+							<input type="text" name="title" placeholder="请输入返货单位" autocomplete="off" class="layui-input">
+						</td>
+						<td class="layui-bg-gray">录入时间</td>
+						<td>
+							<input type="text" name="title" placeholder="请输入录入时间" autocomplete="off" class="layui-input">
+						</td>
+					</tr>
+					<tr>
+						<td class="layui-bg-gray">录入单位</td>
+						<td>
+							<input type="text" name="title" placeholder="请输入录入单位" autocomplete="off" class="layui-input">
+						</td>
+						<td class="layui-bg-gray">录入人</td>
+						<td>
+							<input type="text" name="title" placeholder="请输入录入人" autocomplete="off" class="layui-input">
+						</td>
+						<td class="layui-bg-gray">确认时间</td>
+						<td>
+							<input type="text" name="title" placeholder="请输入确认时间" autocomplete="off" class="layui-input">
+						</td>
+					</tr>
+
+					<tr>
+						<td class="layui-bg-gray">确认单位</td>
+						<td>
+							<input type="text" name="title" placeholder="请输入确认单位" autocomplete="off" class="layui-input">
+						</td>
+						<td class="layui-bg-gray">确认人</td>
+						<td>
+							<input type="text" name="title" placeholder="请输入确认人" autocomplete="off" class="layui-input">
+						</td>
+						<td class="layui-bg-gray">返货处理状态</td>
+						<td>
+							<select name="city" lay-verify="">
+								<option value="">请选择状态</option>
+								<option value="1">未确认</option>
+								<option value="2">同意返货</option>
+								<option value="3">拒绝</option>
+								<option value="4">同意转发</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td class="layui-bg-gray">返货执行状态</td>
+						<td>
+							<select name="city" lay-verify="">
+								<option value="">请选择状态</option>
+								<option value="1">无</option>
+								<option value="2">已转发</option>
+								<option value="3">已返货</option>
+							</select>
+						</td>
+						<td class="layui-bg-gray">系统自动确认标志</td>
+						<td>
+							<input type="radio" name="sex" value="1" title="是" checked>
+							<input type="radio" name="sex" value="0" title="否">
+						</td>
+						<td class="layui-bg-gray">拒绝类型</td>
+						<td>
+							<select name="city" lay-verify="">
+								<option value="">请选择类型</option>
+								<option value="1">类型1</option>
+								<option value="2">类型2</option>
+								<option value="3">类型3</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td class="layui-bg-gray">处理意见</td>
+						<td colspan="5">
+							<textarea name="desc" placeholder="请输入处理意见" class="layui-textarea"></textarea>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="6">
+							<button class="layui-btn" style="background: #1da02b;">确定</button>
+							<button type="button" class="layui-btn layui-btn-primary">取消</button>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</div>
+
+		</div>
+	</div>
+
+</div>
+<script type="text/javascript" src="../../custom/jquery.min.js"></script>
+<script type="text/javascript" src="../../layui/layui.js"></script>
+<script type="text/javascript">
+
+	//加载'form'模块，使checkbox、select、radio初始化
+	layui.use('form', function(){
+
+	});
+
+	//注意：选项卡 依赖 element 模块，否则无法进行功能性操作
+	layui.use('element', function(){
+		var element = layui.element;
+
+		//…
+	});
+
+</script>
+</body>
+</html>

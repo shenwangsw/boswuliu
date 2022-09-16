@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>合包查询</title>
+    <link rel="stylesheet" type="text/css" href="../../layui/css/layui.css">
+    <link rel="stylesheet" type="text/css" href="../css/page.css">
+</head>
+<body>
+<!-- 外部整体 -->
+<div class="external">
+    <!-- 标题 -->
+    <p class="ptitle">合包查询</p>
+    <!-- 操作区域 -->
+    <div class="operation">
+        <!-- 向上间距 -->
+        <div style="height: 10px;"></div>
+        <form class="layui-form" action="">
+            <div class="layui-form-item">
+
+                <div class="layui-inline">
+                    <label class="layui-form-label">合包号:</label>
+                    <div class="layui-input-block" style="width: 150px;">
+                        <input type="text" name="title" placeholder="请输入合包号" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+
+                <div class="layui-inline">
+                    <label class="layui-form-label" >合包状态:</label>
+                    <div class="layui-input-block" style="width: 150px;">
+                        <select name="city" lay-verify="required">
+                            <option value=""></option>
+                            <option value="0">合包状态</option>
+                            <option value="1">合包状态</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- 查询按钮组 -->
+                <div class="layui-inline">
+                    <button type="button" class="layui-btn btnQuery">
+                        <i class="layui-icon">&#xe615;</i> 查询
+                    </button>
+
+                    <button type="button" class="layui-btn btnOther">
+                        <i class="layui-icon">&#x1002;</i> 重置
+                    </button>
+
+                    <button id="btnMore" type="button" class="layui-btn btnOther">
+                        <i class="layui-icon">&#xe671;</i>更多
+                    </button>
+                </div>
+
+            </div>
+
+            <!-- 隐藏其它查询条件 -->
+            <div id="hQuery" style="display: none;">
+                <div class="layui-form-item">
+
+                    <div class="layui-inline">
+                        <label class="layui-form-label">开始日期:</label>
+                        <div class="layui-input-block" style="width: 150px;">
+                            <input type="text" name="title" placeholder="合包开始日期" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+
+                    <div class="layui-inline">
+                        <label class="layui-form-label">结束日期:</label>
+                        <div class="layui-input-block" style="width: 150px;">
+                            <input type="text" name="title" placeholder="合包结束日期" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+
+                    <div class="layui-inline">
+                        <label class="layui-form-label">设备号:</label>
+                        <div class="layui-input-block" style="width: 150px;">
+                            <input type="text" name="title" placeholder="请输入送达时限" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <div class="layui-form-item">
+
+                    <div class="layui-inline">
+                        <label class="layui-form-label">合包单位:</label>
+                        <div class="layui-input-block" style="width: 150px;">
+                            <input type="text" name="title" placeholder="请输入入库时间" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+
+                    <div class="layui-inline">
+                        <label class="layui-form-label">单位含下级:</label>
+                        <div class="layui-input-block" style="width: 150px;">
+                            <select name="city" lay-verify="required">
+                                <option value=""></option>
+                                <option value="0">包含</option>
+                                <option value="1">不包含</option>
+                            </select>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- 操作按扭组 -->
+            <div class="layui-form-item" style="padding-left: 11px;height: 30px;">
+                <div class="layui-inline">
+                    <button type="button" class="layui-btn layui-btn-small btnQuery" id="opExport">导出</button>
+                </div>
+            </div>
+
+            <!-- 数据表格 -->
+            <table class="layui-table">
+                <colgroup>
+                    <col width="60">
+                    <col width="110">
+                    <col width="110">
+                    <col width="110">
+                    <col width="130">
+                    <col width="110">
+                    <col width="130">
+                    <col width="110">
+                    <col>
+                </colgroup>
+                <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>合包号</th>
+                    <th>封签号</th>
+                    <th>合包人</th>
+                    <th>合包单位</th>
+                    <th>拆包人</th>
+                    <th>拆包单位</th>
+                    <th>记录人</th>
+                    <th>记录时间</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>HB1001</td>
+                    <th>FQ1001</th>
+                    <td>老王</td>
+                    <td>长沙分部</td>
+                    <td>老李</td>
+                    <th>深圳分部</th>
+                    <th>张三</th>
+                    <td>2017-11-11 11:11:11</td>
+                </tr>
+
+                <tr>
+                    <td colspan="9">
+                        <input type="checkbox" name="check" lay-skin="primary" title="统计">
+                        <!--交接单-->
+                        <span id="" style="padding-left: 10px;color: red;">交接单：10条</span>
+                    </td>
+
+                </tr>
+                </tbody>
+            </table>
+    </div>
+    </form>
+</div>
+</div>
+<script type="text/javascript" src="../../custom/jquery.min.js"></script>
+<script type="text/javascript" src="../../layer/layer.js"></script>
+<script type="text/javascript" src="../../layui/layui.js"></script>
+<script type="text/javascript">
+    //加载'form'模块，使checkbox、select、radio初始化
+    layui.use('form', function(){
+
+    });
+
+    //加载'table'组件
+    layui.use('table', function(){
+        var table = layui.table;
+    });
+
+    //加载'laydate'时间组件
+    layui.use('laydate', function(){
+        var laydate = layui.laydate;
+        //执行一个laydate实例
+        laydate.render({
+            elem: '#opTime' //指定元素
+        });
+    });
+
+    $(function(){
+        //显示、隐藏剩余的查询条件
+        $('#btnMore').click(function(){
+            $("#hQuery").toggle();
+        });
+
+
+        //新增
+        $('#opAdd').click(function(){
+            //页面层
+            layer.open({
+                title: ['新增', 'color:#fff;background:#1da02b;'],
+                type: 2,
+                //skin: 'layui-layer-rim', //加上边框
+                area: ['660px', '340px'], //宽高
+                content: 'invoiceComparisonTable_add.html'
+            });
+        });
+
+        //修改
+        $('#opEdit').click(function(){
+            //页面层
+            layer.open({
+                title: ['修改', 'color:#fff;background:#1da02b;'],
+                type: 2,
+                //skin: 'layui-layer-rim', //加上边框
+                area: ['660px', '340px'], //宽高
+                content: 'invoiceComparisonTable_add.html'
+            });
+        });
+
+        $('#opDetailed').click(function(){
+            //页面层
+            layer.open({
+                title: ['明细数据', 'color:#fff;background:#1da02b;'],
+                type: 2,
+                //skin: 'layui-layer-rim', //加上边框
+                area: ['980px', '440px'], //宽高
+                content: 'check_list.html'
+            });
+        });
+
+    });
+
+</script>
+
+</body>
+</html>

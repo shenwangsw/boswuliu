@@ -1,0 +1,49 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="utf-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1"> 
+    <title>基础档案</title> 
+    <link rel="stylesheet" type="text/css" href="../../layui/css/layui.css">
+</head> 
+<body>
+	<div class="layui-form">
+		<div class="layui-tab layui-tab-card">
+		  <ul class="layui-tab-title">
+		    <li class="layui-this">关联地址列表</li>
+		    <li>用户管理</li>
+		    <li>权限分配</li>
+		    <li>商品管理</li>
+		    <li>订单管理</li>
+		  </ul>
+		  <div class="layui-tab-content" style="height: 100px;">
+		    <div class="layui-tab-item layui-show">1</div>
+		    <div class="layui-tab-item">2</div>
+		    <div class="layui-tab-item">3</div>
+		    <div class="layui-tab-item">4</div>
+		    <div class="layui-tab-item">5</div>
+		    <div class="layui-tab-item">6</div>
+		  </div>
+		</div>
+	</div>
+	<script type="text/javascript" src="../../custom/jquery.min.js"></script>
+	<script type="text/javascript" src="../../layui/layui.js"></script>
+	<script type="text/javascript">
+        
+        //加载'form'模块，使checkbox、select、radio初始化
+        layui.use('form', function(){
+           
+        });
+        
+        //注意：选项卡 依赖 element 模块，否则无法进行功能性操作
+		layui.use('element', function(){
+		  var element = layui.element;
+		  
+		  //…
+		});
+      
+    </script>
+</body> 
+</html>
+    
+

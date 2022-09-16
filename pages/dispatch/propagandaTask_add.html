@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>宣传任务</title>
+    <link rel="stylesheet" type="text/css" href="../../layui/css/layui.css">
+</head>
+<body>
+	<form class="layui-form">
+	<table class="layui-table" style="width: 98%;margin: 1px auto;text-align: center;">
+	  	<tbody>
+		    <tr>
+		    	<td class="layui-bg-gray" width="15%">发布时间</td>
+		      	<td width="35%">
+              <input type="text" name="title" placeholder="请输入发布时间" autocomplete="off" class="layui-input">
+		      	</td>
+		      	<td class="layui-bg-gray" width="15%">失效时间</td>
+		      	<td width="35%">
+              <input type="text" name="title" placeholder="请输入失效时间" autocomplete="off" class="layui-input">
+		      	</td>
+		    </tr>
+		    <tr>
+		      	<td class="layui-bg-gray">状态</td>
+		      	<td>
+              <input type="radio" name="state" value="1" title="有效" checked>
+              <input type="radio" name="state" value="2" title="作废">
+		      	</td>
+            <td class="layui-bg-gray"></td>
+            <td></td>
+		    </tr>
+		    <tr>
+		      	<td class="layui-bg-gray">宣传概要</td>
+		      	<td colspan="3">
+		      		<input type="text" name="title" placeholder="请输入宣传概要" autocomplete="off" class="layui-input">
+		      	</td>
+		    </tr>
+		    <tr>
+		      	<td class="layui-bg-gray">宣传内容</td>
+		      	<td colspan="3">
+		      		<textarea name="desc" placeholder="请输入宣传内容" class="layui-textarea"></textarea>
+		      	</td>
+		    </tr>
+
+		    <tr>
+		      	<td colspan="4">
+					<button class="layui-btn" style="background: #1da02b;">确定</button>
+					<button type="button" class="layui-btn layui-btn-primary">取消</button>
+		      	</td>
+		    </tr>
+	  	</tbody>
+	</table>
+	</form>
+	<script type="text/javascript" src="../../custom/jquery.min.js"></script>
+	<script type="text/javascript" src="../../layui/layui.js"></script>
+	<script type="text/javascript">
+
+        //加载'form'模块，使checkbox、select、radio初始化
+        layui.use('form', function(){
+
+        });
+
+    </script>
+</body>
+</html>

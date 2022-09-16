@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>人工调度</title>
+<link rel="stylesheet" type="text/css" href="../../layui/css/layui.css">
+<link rel="stylesheet" type="text/css" href="../css/page.css">
+</head>
+<body>
+<!-- 外部整体 -->
+<div class="external">
+	<!-- 标题 -->
+	<p class="ptitle">人工调度</p>
+	<!-- 操作区域 -->
+	<div class="operation">
+		<!-- 向上间距 -->
+		<div style="height: 10px;"></div>
+		<form class="layui-form" action="">
+			<div class="layui-form-item">
+
+				<div class="layui-inline">
+				    <label class="layui-form-label">所属单位:</label>
+				    <div class="layui-input-block" style="width: 150px;">
+				    	<input type="text" name="title" placeholder="请输入所属单位" autocomplete="off" class="layui-input">
+				    </div>
+			    </div>
+
+			    <div class="layui-inline">
+				    <label class="layui-form-label" >通知单号:</label>
+				    <div class="layui-input-block" style="width: 150px;">
+							<input type="text" name="title" placeholder="请输入业务通知单号" autocomplete="off" class="layui-input">
+				    </div>
+			    </div>
+
+				<!-- 查询按钮组 -->
+			    <div class="layui-inline">
+					<button type="button" class="layui-btn btnQuery">
+						<i class="layui-icon">&#xe615;</i> 查询
+					</button>
+
+					<button type="button" class="layui-btn btnOther">
+						<i class="layui-icon">&#x1002;</i> 重置
+					</button>
+
+					<button id="btnMore" type="button" class="layui-btn btnOther">
+						<i class="layui-icon">&#xe671;</i>更多
+					</button>
+				</div>
+
+			</div>
+
+			<!-- 隐藏其它查询条件 -->
+			<div id="hQuery" class="layui-form-item" style="display: none;">
+
+				<div class="layui-inline">
+				    <label class="layui-form-label">来源类型:</label>
+				    <div class="layui-input-block" style="width: 150px;">
+							<select name="pro" lay-verify="required">
+                <option value=""></option>
+                <option value="0">正常</option>
+                <option value="1">异调</option>
+                <option value="2">网上</option>
+              </select>
+				    </div>
+			    </div>
+
+			    <div class="layui-inline">
+				    <label class="layui-form-label">日期:</label>
+				    <div class="layui-input-block" style="width: 150px;">
+				     	<input type="text" name="title" placeholder="请输入日期" autocomplete="off" class="layui-input">
+				    </div>
+			    </div>
+
+			    <div class="layui-inline">
+				    <label class="layui-form-label">是否超时:</label>
+				    <div class="layui-input-block" style="width: 150px;">
+							<select name="pro" lay-verify="required">
+                <option value=""></option>
+                <option value="0">是</option>
+                <option value="1">否</option>
+              </select>
+				    </div>
+			    </div>
+
+					<div class="layui-inline">
+				    <label class="layui-form-label">是否异常:</label>
+				    <div class="layui-input-block" style="width: 150px;">
+							<select name="pro" lay-verify="required">
+                <option value=""></option>
+                <option value="0">是</option>
+                <option value="1">否</option>
+              </select>
+				    </div>
+			    </div>
+			</div>
+
+			<!-- 操作按扭组 -->
+			<div class="layui-form-item" style="padding-left: 11px;height: 30px;">
+				<div class="layui-inline">
+					<button type="button" class="layui-btn layui-btn-small btnQuery" id="distribution">分配</button>
+					<button type="button" class="layui-btn layui-btn-small btnQuery" id="distribution">退回</button>
+					<button type="button" class="layui-btn layui-btn-small btnQuery" id="distribution">销单</button>
+					<button type="button" class="layui-btn layui-btn-small btnOther" id="detail">详情</button>
+				</div>
+			</div>
+
+			<!-- 数据表格 -->
+			<table class="layui-table">
+				<colgroup>
+					<col width="50">
+				    <col width="60">
+				    <col width="87">
+				    <col width="145">
+				    <col width="90">
+				    <col width="120">
+				    <col width="90">
+				    <col width="80">
+				    <col width="70">
+				    <col width="60">
+					<col width="60">
+					<col width="90">
+				    <col>
+			  	</colgroup>
+			  	<thead>
+				    <tr>
+				    	<th><input type="checkbox" name="check" lay-skin="primary"></th>
+				    	<th>序号</th>
+				      	<th>通知单号</th>
+				      	<th>预约收件时间</th>
+				      	<th>客户名称</th>
+					  	<th>取件地址</th>
+					  	<th>客户编号</th>
+					  	<th>联系人</th>
+					  	<th>电话</th>
+					  	<th>重量</th>
+					  	<th>体积</th>
+						<th>重要提示</th>
+						<th>到达城市</th>
+						<!--
+						<th>取货人员信息</th>
+						<th>派送地址</th>
+						<th>处理单位</th>
+						<th>通知单来源</th>
+						<th>客户单号修改标志</th>
+						 -->
+				    </tr>
+			  	</thead>
+			  	<tbody>
+				    <tr>
+				      	<td><input type="checkbox" name="check" lay-skin="primary"></td>
+				      	<td>1</td>
+				      	<td>GD1001</td>
+				      	<td>2017-10-17 14:31</td>
+				      	<td>老王</td>
+				      	<td>
+									<p class="overlength" title="湖南省长沙市岳麓区枫林三路涉外国际公馆5栋2单元">湖南省长沙市岳麓区枫林三路涉外国际公馆5栋2单元</p>
+								</td>
+				      	<td>BH1001</td>
+								<td>老王</td>
+								<td>18612345678</td>
+				      	<td>1kg</td>
+				      	<td>1</td>
+								<td>按时到达</td>
+								<td>深圳</td>
+								<!--
+								<td>老张</td>
+								<td>深圳市福田保税区腾邦物流大厦</td>
+								<td>福田分部</td>
+								<td>电话</td>
+								<td>标志</td>
+							  -->
+				    </tr>
+
+			  	</tbody>
+			</table>
+			<div id="ApartAge"></div>
+		</div>
+		</form>
+	</div>
+</div>
+<script type="text/javascript" src="../../custom/jquery.min.js"></script>
+<script type="text/javascript" src="../../layer/layer.js"></script>
+<script type="text/javascript" src="../../layui/layui.js"></script>
+<script type="text/javascript">
+	
+	layui.use(['laypage', 'layer'], function(){
+		  var laypage = layui.laypage
+		  ,layer = layui.layer;
+		  
+	   //完整功能
+	     laypage.render({
+	       elem: 'ApartAge'
+	       ,count: 6 //条数
+		   ,limit:6//每页的数据量
+	       ,layout: ['count', 'prev', 'page', 'next', 'limit', 'refresh', 'skip']
+	       ,jump: function(obj){
+	         console.log(obj)
+	       }
+	     });
+		
+		//调用分页
+		  laypage.render({
+		    count: data.length
+		    ,jump: function(obj){
+		      //模拟渲染
+		      document.getElementById('biuuu_city_list').innerHTML = function(){
+		        var arr = []
+		        ,thisData = data.concat().splice(obj.curr*obj.limit - obj.limit, obj.limit);
+		        layui.each(thisData, function(index, item){
+		          arr.push('<li>'+ item +'</li>');
+		        });
+		        return arr.join('');
+		      }();
+		    }
+		  });
+	});
+	
+//加载'form'模块，使checkbox、select、radio初始化
+layui.use('form', function(){
+
+});
+
+//加载'table'组件
+layui.use('table', function(){
+  var table = layui.table;
+});
+
+//加载'laydate'时间组件
+layui.use('laydate', function(){
+  var laydate = layui.laydate;
+  //执行一个laydate实例
+  laydate.render({
+    elem: '#opTime' //指定元素
+  });
+});
+
+$(function(){
+	//显示、隐藏剩余的查询条件
+	$('#btnMore').click(function(){
+		$("#hQuery").toggle();
+	});
+
+	//分配
+	$('#distribution').click(function(){
+		//页面层
+		layer.open({
+		  title: ['分配', 'color:#fff;background:#1da02b;'],
+		  type: 2,
+		  //skin: 'layui-layer-rim', //加上边框
+		  area: ['350px', '220px'], //宽高
+		  content: 'distribution.html'
+		});
+	});
+
+	//详情
+	$('#detail').click(function(){
+		//页面层
+		layer.open({
+		  title: ['分配', 'color:#fff;background:#1da02b;'],
+		  type: 2,
+		  //skin: 'layui-layer-rim', //加上边框
+			area: ['930px', '440px'], //宽高
+			content: 'manualScheduling_detail.html'
+		});
+	});
+
+
+
+
+});
+
+</script>
+
+</body>
+</html>

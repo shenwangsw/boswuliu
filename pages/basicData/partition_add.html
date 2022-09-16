@@ -1,0 +1,96 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="utf-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1"> 
+    <title>管理分区</title> 
+    <link rel="stylesheet" type="text/css" href="../../layui/css/layui.css">
+</head> 
+<body>
+	<form class="layui-form">
+	<table class="layui-table" style="width: 98%;margin: 1px auto;text-align: center;">
+	  	<tbody>
+		    <tr>
+		    	<td class="layui-bg-gray" width="10%">省份</td>
+		      	<td width="23%">
+      				<select name="city" lay-verify="required">
+			        	<option value=""></option>
+			        	<option value="0">全部</option>
+			        	<option value="1">湖南</option>
+			        	<option value="2">湖北</option>
+			        	<option value="3">广东</option>
+			      	</select>
+		      	</td>
+		      	<td class="layui-bg-gray" width="10%">城市</td>
+		      	<td width="23%">
+					<select name="city" lay-verify="required">
+			        	<option value=""></option>
+			        	<option value="0">长沙</option>
+			        	<option value="1">岳阳</option>
+			        	<option value="2">株洲</option>
+			        	<option value="3">深圳</option>
+			        	<option value="4">广州</option>
+			      	</select>
+		      	</td>
+		      	<td class="layui-bg-gray" width="10%">区（县）</td>
+		      	<td width="23%">
+					<select name="city" lay-verify="required">
+			        	<option value=""></option>
+			        	<option value="0">长沙县</option>
+			        	<option value="1">望城县</option>
+			        	<option value="2">宁乡县</option>
+			      	</select>
+		      	</td>
+		    </tr>
+		    <tr>
+		      	<td class="layui-bg-gray">分拣编码</td>
+		      	<td>
+					<input type="text" name="title" placeholder="请输入分拣编码" autocomplete="off" class="layui-input">
+		      	</td>
+		      	<td class="layui-bg-gray">定区编码</td>
+		      	<td>
+					<input type="text" name="title" placeholder="请输入定区编码" autocomplete="off" class="layui-input">
+		      	</td>
+		      	<td class="layui-bg-gray">关键字</td>
+		      	<td>
+					<input type="text" name="title" placeholder="请输入关键字" autocomplete="off" class="layui-input">
+		      	</td>
+		      	
+		    </tr>
+		    <tr>
+		    	<td class="layui-bg-gray">起始号</td>
+		      	<td>
+					<input type="text" name="title" placeholder="请输入起始号" autocomplete="off" class="layui-input">
+		      	</td>
+		      	<td class="layui-bg-gray">终止号</td>
+		      	<td>
+					<input type="text" name="title" placeholder="请输入终止号" autocomplete="off" class="layui-input">
+		      	</td>
+		      	<td class="layui-bg-gray">单双号</td>
+		      	<td>
+					<input type="text" name="title" placeholder="请输入单双号" autocomplete="off" class="layui-input">
+		      	</td>
+		    </tr>
+		    <tr>
+		      	<td colspan="6">
+					<button class="layui-btn" style="background: #1da02b;">确定</button>
+					<button type="button" class="layui-btn layui-btn-primary">取消</button>
+		      	</td>
+		    </tr>
+	  	</tbody>
+	</table>
+	</form>
+	<script type="text/javascript" src="../../custom/jquery.min.js"></script>
+	<script type="text/javascript" src="../../layui/layui.js"></script>
+	<script type="text/javascript">
+        
+        //加载'form'模块，使checkbox、select、radio初始化
+        layui.use('form', function(){
+           
+        });
+      
+    </script>
+</body> 
+</html>
+    
+

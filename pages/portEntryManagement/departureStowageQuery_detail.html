@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>出港配载详情</title>
+    <link rel="stylesheet" type="text/css" href="../../layui/css/layui.css">
+    <link rel="stylesheet" type="text/css" href="../css/page.css">
+</head>
+<body>
+<!-- 外部整体 -->
+<div class="external">
+    <!-- 标题 -->
+    <p class="ptitle">出港配载详情</p>
+    <!-- 操作区域 -->
+    <div class="operation">
+        <!-- 向上间距 -->
+        <div style="height: 10px;"></div>
+        <form class="layui-form" action="">
+            <!-- 操作按扭组 -->
+            <div class="layui-form-item" style="padding-left: 11px;height: 30px;">
+                <div class="layui-inline">
+                    <button type="button" class="layui-btn layui-btn-small btnQuery" id="opBack">返回</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <table class="layui-table" style="width: 100%;margin: 1px auto;text-align: center;margin-top: 5px;">
+        <tbody>
+        <tr>
+            <td class="layui-bg-gray" width="13%">状态</td>
+            <td width="20%"></td>
+            <td class="layui-bg-gray" width="13%">到达口岸</td>
+            <td width="20%"></td>
+            <td class="layui-bg-gray" width="13%">配载方式</td>
+            <td width="20%"></td>
+        </tr>
+
+        <tr>
+            <td class="layui-bg-gray">航班车次</td>
+            <td></td>
+            <td class="layui-bg-gray">运力</td>
+            <td></td>
+            <td class="layui-bg-gray">货票号</td>
+            <td></td>
+        </tr>
+
+        <tr>
+            <td class="layui-bg-gray">承运商</td>
+            <td></td>
+            <td class="layui-bg-gray">预计离港时间</td>
+            <td></td>
+            <td class="layui-bg-gray">预计到港时间</td>
+            <td></td>
+        </tr>
+
+        <tr>
+            <td class="layui-bg-gray">票数</td>
+            <td></td>
+            <td class="layui-bg-gray">件数</td>
+            <td></td>
+            <td class="layui-bg-gray">重量</td>
+            <td></td>
+        </tr>
+
+        <tr>
+            <td class="layui-bg-gray">体积</td>
+            <td></td>
+            <td class="layui-bg-gray">处理人</td>
+            <td></td>
+            <td class="layui-bg-gray">处理时间</td>
+            <td></td>
+        </tr>
+
+        <tr>
+            <td class="layui-bg-gray">确认人</td>
+            <td></td>
+            <td class="layui-bg-gray">确认时间</td>
+            <td></td>
+            <td class="layui-bg-gray">确认单位</td>
+            <td></td>
+        </tr>
+
+        <tr>
+            <td class="layui-bg-gray">接收人</td>
+            <td></td>
+            <td class="layui-bg-gray">接收时间</td>
+            <td></td>
+            <td class="layui-bg-gray">接收单位</td>
+            <td></td>
+        </tr>
+
+        <tr>
+            <td class="layui-bg-gray">异常备注</td>
+            <td></td>
+            <td class="layui-bg-gray">工作单号</td>
+            <td></td>
+            <td class="layui-bg-gray">中转</td>
+            <td></td>
+        </tr>
+
+        <tr>
+            <td class="layui-bg-gray">实际数量</td>
+            <td></td>
+            <td class="layui-bg-gray">到达地</td>
+            <td></td>
+            <td class="layui-bg-gray">品名</td>
+            <td></td>
+        </tr>
+
+        <tr>
+            <td class="layui-bg-gray">实际体积</td>
+            <td></td>
+            <td class="layui-bg-gray">送达时限</td>
+            <td></td>
+            <td class="layui-bg-gray">配载要求</td>
+            <td></td>
+        </tr>
+
+        <tr>
+            <td class="layui-bg-gray">收货人</td>
+            <td></td>
+            <td class="layui-bg-gray">收货地址</td>
+            <td></td>
+            <td class="layui-bg-gray">到付款</td>
+            <td></td>
+        </tr>
+
+        <tr>
+            <td class="layui-bg-gray">特殊保障</td>
+            <td></td>
+            <td class="layui-bg-gray">发货类型</td>
+            <td></td>
+            <td class="layui-bg-gray">剩余时间</td>
+            <td></td>
+        </tr>
+
+        <tr>
+            <td class="layui-bg-gray">重要提示</td>
+            <td colspan="5"></td>
+        </tr>
+
+
+        </tbody>
+    </table>
+
+</div>
+</div>
+
+<script type="text/javascript" src="../../custom/jquery.min.js"></script>
+<script type="text/javascript" src="../../layer/layer.js"></script>
+<script type="text/javascript" src="../../layui/layui.js"></script>
+<script type="text/javascript">
+    //加载'form'模块，使checkbox、select、radio初始化
+    layui.use('form', function(){
+
+    });
+
+    $(function(){
+        //返回
+        $('#opBack').click(function(){
+            window.history.back();
+        });
+    });
+
+</script>
+
+</body>
+</html>

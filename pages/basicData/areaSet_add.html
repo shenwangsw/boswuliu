@@ -1,0 +1,112 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="utf-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1"> 
+    <title>区域设置</title> 
+    <link rel="stylesheet" type="text/css" href="../../layui/css/layui.css">
+</head> 
+<body>
+	<form class="layui-form">
+	<table class="layui-table" style="width: 98%;margin: 1px auto;text-align: center;">
+	  	<tbody>
+		    <tr>
+		    	<td class="layui-bg-gray" width="15%">省份</td>
+		      	<td width="35%">
+      				<input type="text" name="title" placeholder="请输入省份" autocomplete="off" class="layui-input">
+		      	</td>
+		      	<td class="layui-bg-gray" width="15%">城市</td>
+		      	<td width="35%">
+					<input type="text" name="title" placeholder="请输入城市" autocomplete="off" class="layui-input">
+		      	</td>
+		    </tr>
+		    <tr>
+		      	<td class="layui-bg-gray">区（县）</td>
+		      	<td>
+					<input type="text" name="title" placeholder="请输入区（县）" autocomplete="off" class="layui-input">
+		      	</td>
+		      	<td class="layui-bg-gray">邮政编码</td>
+		      	<td>
+					<input type="text" name="title" placeholder="请输入邮政编码" autocomplete="off" class="layui-input">
+		      	</td>
+		    </tr>
+		    <tr>
+		      	<td class="layui-bg-gray">简码</td>
+		      	<td>
+					<input type="text" name="title" placeholder="请输入简码" autocomplete="off" class="layui-input">
+		      	</td>
+		      	<td class="layui-bg-gray">城市编码</td>
+		      	<td>
+					<input type="text" name="title" placeholder="请输入城市编码" autocomplete="off" class="layui-input">
+		      	</td>
+		    </tr>
+			<tr>
+				<td class="layui-bg-gray">进港单位</td>
+				<td>
+					<select name="city" lay-verify="required">
+						<option value=""></option>
+						<option value="0">单位1</option>
+						<option value="1">单位2</option>
+						<option value="2">单位3</option>
+					</select>
+				</td>
+				<td class="layui-bg-gray">补码单位</td>
+				<td>
+					<select name="city" lay-verify="required">
+						<option value=""></option>
+						<option value="0">单位1</option>
+						<option value="1">单位2</option>
+						<option value="2">单位3</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td class="layui-bg-gray">性质</td>
+				<td>
+					<select name="city" lay-verify="required">
+						<option value=""></option>
+						<option value="0">省级</option>
+						<option value="1">市辖市</option>
+						<option value="2">直辖市</option>
+						<option value="3">县级</option>
+						<option value="4">地级</option>
+						<option value="5">省会</option>
+					</select>
+				</td>
+				<td class="layui-bg-gray">所属区域</td>
+				<td>
+					<select name="city" lay-verify="required">
+						<option value=""></option>
+						<option value="0">东北区</option>
+						<option value="1">华东区</option>
+						<option value="2">华南区</option>
+						<option value="3">西北区</option>
+						<option value="4">华中区</option>
+						<option value="5">西南区</option>
+						<option value="6">华北区</option>
+					</select>
+				</td>
+			</tr>
+		    <tr>
+		      	<td colspan="4">
+					<button class="layui-btn" style="background: #1da02b;">确定</button>
+					<button type="button" class="layui-btn layui-btn-primary">取消</button>
+		      	</td>
+		    </tr>
+	  	</tbody>
+	</table>
+	</form>
+	<script type="text/javascript" src="../../custom/jquery.min.js"></script>
+	<script type="text/javascript" src="../../layui/layui.js"></script>
+	<script type="text/javascript">
+        
+        //加载'form'模块，使checkbox、select、radio初始化
+        layui.use('form', function(){
+           
+        });
+      
+    </script>
+</body> 
+</html>
+    
+

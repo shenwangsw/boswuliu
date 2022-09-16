@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>进港分单</title>
+    <link rel="stylesheet" type="text/css" href="../../layui/css/layui.css">
+    <link rel="stylesheet" type="text/css" href="../css/page.css">
+</head>
+<body>
+
+
+<div class="layui-tab layui-tab-brief">
+    <ul class="layui-tab-title">
+        <li class="layui-this">已分单</li>
+        <li>未分单</li>
+    </ul>
+    <div class="layui-tab-content">
+        <!--已分单 开始-->
+        <div class="layui-tab-item layui-show">
+
+            <!-- 外部整体 -->
+            <div class="external">
+                <!-- 标题 -->
+                <p class="ptitle">进港分单</p>
+                <!-- 操作区域 -->
+                <div class="operation">
+                    <!-- 向上间距 -->
+                    <div style="height: 10px;"></div>
+                    <form class="layui-form" action="">
+                        <div class="layui-form-item">
+
+                            <div class="layui-inline">
+                                <label class="layui-form-label">工作单号:</label>
+                                <div class="layui-input-block" style="width: 150px;">
+                                    <input type="text" name="title" placeholder="请输入工作单号" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+
+                            <div class="layui-inline">
+                                <label class="layui-form-label" >中心名称:</label>
+                                <div class="layui-input-block" style="width: 150px;">
+                                    <input type="text" name="title" placeholder="运转中心名称" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+
+                            <!-- 查询按钮组 -->
+                            <div class="layui-inline">
+                                <button type="button" class="layui-btn btnQuery">
+                                    <i class="layui-icon">&#xe615;</i> 查询
+                                </button>
+
+                                <button type="button" class="layui-btn btnOther">
+                                    <i class="layui-icon">&#x1002;</i> 重置
+                                </button>
+
+                                <button id="btnMore" type="button" class="layui-btn btnOther">
+                                    <i class="layui-icon">&#xe671;</i>更多
+                                </button>
+                            </div>
+
+                        </div>
+
+                        <!-- 隐藏其它查询条件 -->
+                        <div id="hQuery" style="display: none;">
+                            <div class="layui-form-item">
+                                <div class="layui-inline">
+                                    <label class="layui-form-label">派送单位:</label>
+                                    <div class="layui-input-block" style="width: 150px;">
+                                        <input type="text" name="title" placeholder="请输入派送单位" autocomplete="off" class="layui-input">
+                                    </div>
+                                </div>
+
+                                <div class="layui-inline">
+                                    <label class="layui-form-label">送达时限:</label>
+                                    <div class="layui-input-block" style="width: 150px;">
+                                        <input type="text" name="title" placeholder="请输入送达时限" autocomplete="off" class="layui-input">
+                                    </div>
+                                </div>
+
+                                <div class="layui-inline">
+                                    <label class="layui-form-label">分拨批次:</label>
+                                    <div class="layui-input-block" style="width: 150px;">
+                                        <input type="text" name="title" placeholder="进港分拨批次" autocomplete="off" class="layui-input">
+                                    </div>
+                                </div>
+
+                                <div class="layui-inline">
+                                    <label class="layui-form-label">货物状态:</label>
+                                    <div class="layui-input-block" style="width: 150px;">
+                                        <select name="pro" lay-verify="required">
+                                            <option value="0">全部</option>
+                                            <option value="1">状态1</option>
+                                            <option value="-1">状态2</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="layui-form-item">
+                                <div class="layui-inline">
+                                    <label class="layui-form-label">分单类型:</label>
+                                    <div class="layui-input-block" style="width: 150px;">
+                                        <select name="pro" lay-verify="required">
+                                            <option value="0">全部</option>
+                                            <option value="1">类型1</option>
+                                            <option value="-1">类型2</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="layui-inline">
+                                    <label class="layui-form-label">分单人:</label>
+                                    <div class="layui-input-block" style="width: 150px;">
+                                        <input type="text" name="title" placeholder="请输入分单人" autocomplete="off" class="layui-input">
+                                    </div>
+                                </div>
+
+                                <div class="layui-inline">
+                                    <label class="layui-form-label">分单时间:</label>
+                                    <div class="layui-input-block" style="width: 150px;">
+                                        <input type="text" name="title" placeholder="请输入分单时间" autocomplete="off" class="layui-input">
+                                    </div>
+                                </div>
+
+                                <div class="layui-inline">
+                                    <label class="layui-form-label">入库时间:</label>
+                                    <div class="layui-input-block" style="width: 150px;">
+                                        <input type="text" name="title" placeholder="请输入入库时间" autocomplete="off" class="layui-input">
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                        </div>
+
+                        <!-- 操作按扭组 -->
+                        <div class="layui-form-item" style="padding-left: 11px;height: 30px;">
+                            <div class="layui-inline">
+                            <!--<button type="button" class="layui-btn layui-btn-small btnQuery" id="opSave">保存</button>-->
+                            </div>
+                        </div>
+
+                        <!-- 数据表格 -->
+                        <table class="layui-table">
+                            <colgroup>
+                                <col width="50">
+                                <col width="90">
+                                <col width="90">
+                                <col width="100">
+                                <col width="80">
+                                <col width="80">
+                                <col width="90">
+                                <col width="80">
+                                <col width="80">
+                                <col width="80">
+                                <col>
+                            </colgroup>
+                            <thead>
+                            <tr>
+                                <th><input type="checkbox" name="check" lay-skin="primary"></th>
+                                <th>工作单号</th>
+                                <th>派送单位</th>
+                                <th>货物地址</th>
+                                <th>分单人</th>
+                                <th>分单时间</th>
+                                <th title="入库运转中心">入库中心</th>
+                                <th>入库时间</th>
+                                <th>出库时间</th>
+                                <th>送达时限</th>
+                                <th title="进港分拨批次">批次</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td><input type="checkbox" name="check" lay-skin="primary"></td>
+                                <td>GZD1001</td>
+                                <td>长沙分部</td>
+                                <td><p class="overlength" title="湖南省长沙市涉外国际公馆5栋2单元">湖南省长沙市涉外国际公馆5栋2单元</p></td>
+                                <td>老王</td>
+                                <td><p class="overlength" title="2017-11-11 11:11:11">2017-11-11 11:11:11</p></td>
+                                <td>深圳分部</td>
+                                <td><p class="overlength" title="2017-11-11 11:11:11">2017-11-11 11:11:11</p></td>
+                                <td><p class="overlength" title="2017-11-11 11:11:11">2017-11-11 11:11:11</p></td>
+                                <td><p class="overlength" title="2017-11-11 11:11:11">2017-11-11 11:11:11</p></td>
+                                <td>批次</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+        <!--已分单 结束-->
+
+
+        <!--未分单 开始-->
+        <div class="layui-tab-item">
+
+            <!-- 外部整体 -->
+            <div class="external">
+                <!-- 标题 -->
+                <p class="ptitle">进港分单</p>
+                <!-- 操作区域 -->
+                <div class="operation">
+                    <!-- 向上间距 -->
+                    <div style="height: 10px;"></div>
+                    <form class="layui-form" action="">
+                        <div class="layui-form-item">
+
+                            <div class="layui-inline">
+                                <label class="layui-form-label">工作单号:</label>
+                                <div class="layui-input-block" style="width: 150px;">
+                                    <input type="text" name="title" placeholder="请输入工作单号" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+
+                            <div class="layui-inline">
+                                <label class="layui-form-label" >中心名称:</label>
+                                <div class="layui-input-block" style="width: 150px;">
+                                    <input type="text" name="title" placeholder="运转中心名称" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+
+                            <!-- 查询按钮组 -->
+                            <div class="layui-inline">
+                                <button type="button" class="layui-btn btnQuery">
+                                    <i class="layui-icon">&#xe615;</i> 查询
+                                </button>
+
+                                <button type="button" class="layui-btn btnOther">
+                                    <i class="layui-icon">&#x1002;</i> 重置
+                                </button>
+
+                                <button id="btnMore1" type="button" class="layui-btn btnOther">
+                                    <i class="layui-icon">&#xe671;</i>更多
+                                </button>
+                            </div>
+
+                        </div>
+
+                        <!-- 隐藏其它查询条件 -->
+                        <div id="hQuery1" style="display: none;">
+                            <div class="layui-form-item">
+                                <div class="layui-inline">
+                                    <label class="layui-form-label">派送单位:</label>
+                                    <div class="layui-input-block" style="width: 150px;">
+                                        <input type="text" name="title" placeholder="请输入派送单位" autocomplete="off" class="layui-input">
+                                    </div>
+                                </div>
+
+                                <div class="layui-inline">
+                                    <label class="layui-form-label">送达时限:</label>
+                                    <div class="layui-input-block" style="width: 150px;">
+                                        <input type="text" name="title" placeholder="请输入送达时限" autocomplete="off" class="layui-input">
+                                    </div>
+                                </div>
+
+                                <div class="layui-inline">
+                                    <label class="layui-form-label">分拨批次:</label>
+                                    <div class="layui-input-block" style="width: 150px;">
+                                        <input type="text" name="title" placeholder="进港分拨批次" autocomplete="off" class="layui-input">
+                                    </div>
+                                </div>
+
+                                <div class="layui-inline">
+                                    <label class="layui-form-label">货物状态:</label>
+                                    <div class="layui-input-block" style="width: 150px;">
+                                        <select name="pro" lay-verify="required">
+                                            <option value="0">全部</option>
+                                            <option value="1">状态1</option>
+                                            <option value="-1">状态2</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="layui-form-item">
+
+                                <div class="layui-inline">
+                                    <label class="layui-form-label">入库时间:</label>
+                                    <div class="layui-input-block" style="width: 150px;">
+                                        <input type="text" name="title" placeholder="请输入入库时间" autocomplete="off" class="layui-input">
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                        </div>
+
+                        <!-- 操作按扭组 -->
+                        <div class="layui-form-item" style="padding-left: 11px;height: 30px;">
+                            <div class="layui-inline">
+                                <button type="button" class="layui-btn layui-btn-small btnQuery" id="opSave">保存</button>
+                                <button type="button" class="layui-btn layui-btn-small btnQuery" id="opBack">退回</button>
+                            </div>
+                        </div>
+
+                        <!-- 数据表格 -->
+                        <table class="layui-table">
+                            <colgroup>
+                                <col width="50">
+                                <col width="90">
+                                <col width="120">
+                                <col width="90">
+                                <col width="100">
+                                <col width="100">
+                                <col width="110">
+                                <col width="150">
+                                <col width="110">
+                                <col>
+                            </colgroup>
+                            <thead>
+                            <tr>
+                                <th><input type="checkbox" name="check" lay-skin="primary"></th>
+                                <th>工作单号</th>
+                                <th>运转中心名称</th>
+                                <th>派送单位</th>
+                                <th>货物地址</th>
+                                <th>收货单位</th>
+                                <th>入库时间</th>
+                                <th>分单失败原因</th>
+                                <th>送达时限</th>
+                                <th>进港分拨批次</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td><input type="checkbox" name="check" lay-skin="primary"></td>
+                                <td>GZD1001</td>
+                                <td>SZ深圳</td>
+                                <td>长沙分部</td>
+                                <td><p class="overlength" title="湖南省长沙市枫林三路涉外国际公馆五栋">湖南省长沙市枫林三路涉外国际公馆五栋</p></td>
+                                <td>深圳分部</td>
+                                <td><p class="overlength" title="2017-11-11 11:11:11">2017-11-11 11:11:11</p></td>
+                                <td>原因原因</td>
+                                <td><p class="overlength" title="2017-11-11 11:11:11">2017-11-11 11:11:11</p></td>
+                                <td>批次</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+        <!--未分单 结束-->
+
+    </div>
+</div>
+
+
+<script type="text/javascript" src="../../custom/jquery.min.js"></script>
+<script type="text/javascript" src="../../layer/layer.js"></script>
+<script type="text/javascript" src="../../layui/layui.js"></script>
+<script type="text/javascript">
+    //加载'form'模块，使checkbox、select、radio初始化
+    layui.use('form', function(){
+
+    });
+
+    //加载'table'组件
+    layui.use('table', function(){
+        var table = layui.table;
+    });
+
+    //注意：选项卡 依赖 element 模块，否则无法进行功能性操作
+    layui.use('element', function(){
+        var element = layui.element;
+
+        //…
+    });
+
+    //加载'laydate'时间组件
+    layui.use('laydate', function(){
+        var laydate = layui.laydate;
+        //执行一个laydate实例
+        laydate.render({
+            elem: '#opTime' //指定元素
+        });
+    });
+
+    $(function(){
+        //显示、隐藏剩余的查询条件
+        $('#btnMore').click(function(){
+            $("#hQuery").toggle();
+        });
+
+        //显示、隐藏剩余的查询条件
+        $('#btnMore1').click(function(){
+            $("#hQuery1").toggle();
+        });
+
+        //新增
+        $('#opSave').click(function(){
+            //页面层
+            layer.open({
+                title: ['保存', 'color:#fff;background:#1da02b;'],
+                type: 2,
+                area: ['650px', '280px'], //宽高
+                content: 'entryOrder_save.html'
+            });
+        });
+
+        //退回
+        $('#opBack').click(function(){
+            //页面层
+            layer.open({
+                title: ['退回', 'color:#fff;background:#1da02b;'],
+                type: 2,
+                area: ['650px', '280px'], //宽高
+                content: 'entryOrder_save.html'
+            });
+        });
+
+    });
+
+</script>
+
+</body>
+</html>

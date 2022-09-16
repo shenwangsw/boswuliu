@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>转单</title>
+    <link rel="stylesheet" type="text/css" href="../../layui/css/layui.css">
+</head>
+<body>
+	<form class="layui-form">
+	<table class="layui-table" style="width: 98%;margin: 1px auto;text-align: center;">
+	  	<tbody>
+		    <tr>
+		    	<td class="layui-bg-gray" width="15%">所属单位</td>
+		      	<td width="35%">
+              <select name="DW" lay-verify="required">
+                <option value=""></option>
+                <option value="1">总公司</option>
+                <option value="2">岳麓区涉外分部</option>
+                <option value="3">岳麓区涉外分部</option>
+                <option value="4">岳麓区涉外分部</option>
+              </select>
+		      	</td>
+		    </tr>
+		    <tr>
+		      	<td class="layui-bg-gray">分拣编码</td>
+		      	<td>
+              <select name="FLBM" lay-verify="required">
+                <option value=""></option>
+                <option value="1">FLBM1001</option>
+                <option value="2">FLBM1002</option>
+                <option value="3">FLBM1003</option>
+                <option value="4">FLBM1004</option>
+              </select>
+		      	</td>
+		    </tr>
+
+		    <tr>
+		      	<td colspan="4">
+					<button class="layui-btn" style="background: #1da02b;">确定</button>
+					<button type="button" class="layui-btn layui-btn-primary">取消</button>
+		      	</td>
+		    </tr>
+	  	</tbody>
+	</table>
+	</form>
+	<script type="text/javascript" src="../../custom/jquery.min.js"></script>
+	<script type="text/javascript" src="../../layui/layui.js"></script>
+	<script type="text/javascript">
+
+        //加载'form'模块，使checkbox、select、radio初始化
+        layui.use('form', function(){
+
+        });
+
+    </script>
+</body>
+</html>

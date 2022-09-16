@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>区域设置</title>
+<link rel="stylesheet" type="text/css" href="../../layui/css/layui.css">
+<link rel="stylesheet" type="text/css" href="../css/page.css">
+</head>
+<body>
+<!-- 外部整体 -->
+<div class="external">
+	<!-- 标题 -->
+	<p class="ptitle">区域设置</p>
+	<!-- 操作区域 -->
+	<div class="operation">
+		<!-- 向上间距 -->
+		<div style="height: 10px;"></div>
+		<form class="layui-form" action="">
+			<div class="layui-form-item">
+
+				<div class="layui-inline">
+				    <label class="layui-form-label">省份:</label>
+				    <div class="layui-input-block" style="width: 150px;">
+				     	<select name="city" lay-verify="required">
+				        	<option value=""></option>
+				        	<option value="0">全部</option>
+				        	<option value="1">湖南</option>
+				        	<option value="2">湖北</option>
+				        	<option value="3">广东</option>
+				      	</select>
+				    </div>
+			    </div>
+
+			    <div class="layui-inline">
+				    <label class="layui-form-label" >城市:</label>
+				    <div class="layui-input-block" style="width: 150px;">
+				     	<select name="city" lay-verify="required">
+				        	<option value=""></option>
+				        	<option value="0">长沙</option>
+				        	<option value="1">岳阳</option>
+				        	<option value="2">株洲</option>
+				        	<option value="3">深圳</option>
+				        	<option value="4">广州</option>
+				      	</select>
+				    </div>
+			    </div>
+
+				<!-- 查询按钮组 -->
+			    <div class="layui-inline">
+					<button type="button" class="layui-btn btnQuery">
+						<i class="layui-icon">&#xe615;</i> 查询
+					</button>
+
+					<button type="button" class="layui-btn btnOther">
+						<i class="layui-icon">&#x1002;</i> 重置
+					</button>
+
+					<button id="btnMore" type="button" class="layui-btn btnOther">
+						<i class="layui-icon">&#xe671;</i>更多
+					</button>
+				</div>
+
+			</div>
+
+			<!-- 隐藏其它查询条件 -->
+			<div id="hQuery" class="layui-form-item" style="display: none;">
+
+				<div class="layui-inline">
+				    <label class="layui-form-label">区县:</label>
+				    <div class="layui-input-block" style="width: 150px;">
+				     	<select name="city" lay-verify="required">
+				        	<option value=""></option>
+				        	<option value="0">长沙县</option>
+				        	<option value="1">望城县</option>
+				        	<option value="2">宁乡县</option>
+				      	</select>
+				    </div>
+			    </div>
+
+			    <div class="layui-inline">
+				    <label class="layui-form-label">简码:</label>
+				    <div class="layui-input-block" style="width: 150px;">
+				     	<input type="text" name="title" placeholder="请输入简码" autocomplete="off" class="layui-input">
+				    </div>
+			    </div>
+
+			    <div class="layui-inline">
+				    <label class="layui-form-label">城市编码:</label>
+				    <div class="layui-input-block" style="width: 150px;">
+				     	<input type="text" name="title" placeholder="请输入城市编码" autocomplete="off" class="layui-input">
+				    </div>
+			    </div>
+			</div>
+
+			<!-- 操作按扭组 -->
+			<div class="layui-form-item" style="padding-left: 11px;height: 30px;">
+				<div class="layui-inline">
+					<button type="button" class="layui-btn layui-btn-small btnQuery" id="opAdd">新增</button>
+					<button type="button" class="layui-btn layui-btn-small btnOther" id="opUpdate">编辑</button>
+					<button type="button" class="layui-btn layui-btn-small btnOther" id="opDelete">删除</button>
+				</div>
+			</div>
+
+			<!-- 数据表格 -->
+			<table class="layui-table">
+				<colgroup>
+					<col width="50">
+				    <col width="60">
+				    <col width="87">
+				    <col width="87">
+				    <col width="98">
+				    <col width="100">
+				    <col width="100">
+				    <col width="110">
+				    <col width="100">
+				    <col width="100">
+				    <col>
+			  	</colgroup>
+			  	<thead>
+				    <tr>
+				    	<th><input type="checkbox" name="check" lay-skin="primary"></th>
+				    	<th>序号</th>
+				      	<th>省份</th>
+				      	<th>城市</th>
+				      	<th>区（县）</th>
+					  	<th>邮政编码</th>
+					  	<th>简码</th>
+					  	<th>城市编码</th>
+					  	<th>操作人员</th>
+					  	<th>操作单位</th>
+					  	<th>操作时间</th>
+				    </tr> 
+			  	</thead>
+			  	<tbody>
+				    <tr>
+				      	<td><input type="checkbox" name="check" lay-skin="primary"></td>
+				      	<td>1</td>
+				      	<td>湖南</td>
+				      	<td>长沙</td>
+				      	<td>岳麓区</td>
+				      	<td>410006</td>
+				      	<td>hncsyl</td>
+						<td>changsha</td>
+						<td>张三</td>
+				      	<td>总公司</td>
+				      	<td>2017-10-17 14:31:31</td>
+				    </tr>
+				    <tr>
+				      	<td><input type="checkbox" name="check" lay-skin="primary"></td>
+				      	<td>2</td>
+				      	<td>湖南</td>
+				      	<td>长沙</td>
+				      	<td>岳麓区</td>
+				      	<td>410006</td>
+				      	<td>hncsyl</td>
+						<td>changsha</td>
+						<td>张三</td>
+				      	<td>总公司</td>
+				      	<td>2017-10-17 14:31:31</td>
+				    </tr>
+				    <tr>
+				      	<td><input type="checkbox" name="check" lay-skin="primary"></td>
+				      	<td>3</td>
+				      	<td>湖南</td>
+				      	<td>长沙</td>
+				      	<td>岳麓区</td>
+				      	<td>410006</td>
+				      	<td>hncsyl</td>
+						<td>changsha</td>
+						<td>张三</td>
+				      	<td>总公司</td>
+				      	<td>2017-10-17 14:31:31</td>
+				    </tr>
+				    <tr>
+				      	<td><input type="checkbox" name="check" lay-skin="primary"></td>
+				      	<td>4</td>
+				      	<td>湖南</td>
+				      	<td>长沙</td>
+				      	<td>岳麓区</td>
+				      	<td>410006</td>
+				      	<td>hncsyl</td>
+						<td>changsha</td>
+						<td>张三</td>
+				      	<td>总公司</td>
+				      	<td>2017-10-17 14:31:31</td>
+				    </tr>
+				    <tr>
+				      	<td><input type="checkbox" name="check" lay-skin="primary"></td>
+				      	<td>5</td>
+				      	<td>湖南</td>
+				      	<td>长沙</td>
+				      	<td>岳麓区</td>
+				      	<td>410006</td>
+				      	<td>hncsyl</td>
+						<td>changsha</td>
+						<td>张三</td>
+				      	<td>总公司</td>
+				      	<td>2017-10-17 14:31:31</td>
+				    </tr>
+				    <tr>
+				      	<td><input type="checkbox" name="check" lay-skin="primary"></td>
+				      	<td>6</td>
+				      	<td>湖南</td>
+				      	<td>长沙</td>
+				      	<td>岳麓区</td>
+				      	<td>410006</td>
+				      	<td>hncsyl</td>
+						<td>changsha</td>
+						<td>张三</td>
+				      	<td>总公司</td>
+				      	<td>2017-10-17 14:31:31</td>
+				    </tr>
+			  	</tbody>
+			</table>
+			<div id="ApartAge"></div>
+		</div>
+		</form>
+	</div>
+</div>
+<script type="text/javascript" src="../../custom/jquery.min.js"></script>
+<script type="text/javascript" src="../../layer/layer.js"></script>
+<script type="text/javascript" src="../../layui/layui.js"></script>
+<script type="text/javascript">     
+
+layui.use(['laypage', 'layer'], function(){
+	  var laypage = layui.laypage
+	  ,layer = layui.layer;
+	  
+   //完整功能
+     laypage.render({
+       elem: 'ApartAge'
+       ,count: 6 //条数
+	   ,limit:6//每页的数据量
+       ,layout: ['count', 'prev', 'page', 'next', 'limit', 'refresh', 'skip']
+       ,jump: function(obj){
+         console.log(obj)
+       }
+     });
+	
+	//调用分页
+	  laypage.render({
+	    count: data.length
+	    ,jump: function(obj){
+	      //模拟渲染
+	      document.getElementById('biuuu_city_list').innerHTML = function(){
+	        var arr = []
+	        ,thisData = data.concat().splice(obj.curr*obj.limit - obj.limit, obj.limit);
+	        layui.each(thisData, function(index, item){
+	          arr.push('<li>'+ item +'</li>');
+	        });
+	        return arr.join('');
+	      }();
+	    }
+	  });
+});
+
+//加载'form'模块，使checkbox、select、radio初始化
+layui.use('form', function(){
+   
+});
+
+//加载'table'组件
+layui.use('table', function(){
+  var table = layui.table;
+});
+
+//加载'laydate'时间组件
+layui.use('laydate', function(){
+  var laydate = layui.laydate;
+  //执行一个laydate实例
+  laydate.render({
+    elem: '#opTime' //指定元素
+  });
+});
+
+$(function(){
+	//显示、隐藏剩余的查询条件
+	$('#btnMore').click(function(){
+		$("#hQuery").toggle();
+	});
+
+	//新增
+	$('#opAdd').click(function(){
+		//页面层
+		layer.open({
+		  title: ['新增', 'color:#fff;background:#1da02b;'],
+		  type: 2,
+		  //skin: 'layui-layer-rim', //加上边框
+		  area: ['650px', '390px'], //宽高
+		  content: 'areaSet_add.html'
+		});
+	});
+
+	//编辑
+	$('#opUpdate').click(function(){
+		//页面层
+		layer.open({
+		  title: ['编辑', 'color:#fff;background:#1da02b;'],
+		  type: 2,
+		  //skin: 'layui-layer-rim', //加上边框
+			area: ['650px', '390px'], //宽高
+		  content: 'areaSet_add.html'
+		});
+	});
+
+	//删除
+	$('#opDelete').click(function(){
+		//询问框
+		layer.confirm('确定是否删除？', {
+		  	btn: ['是','否'] //按钮
+		}, function(){
+		  	layer.msg('删除成功', {icon: 1});
+		}, function(){
+		  	
+		});
+	});
+
+});
+
+</script>
+
+</body>
+</html>

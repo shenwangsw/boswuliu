@@ -1,0 +1,98 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="utf-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1"> 
+    <title>班车设置</title> 
+    <link rel="stylesheet" type="text/css" href="../../layui/css/layui.css">
+</head> 
+<body>
+	<form class="layui-form">
+	<table class="layui-table" style="width: 98%;margin: 1px auto;text-align: center;">
+	  	<tbody>
+		    <tr>
+		    	<td class="layui-bg-gray" width="15%">线路名称</td>
+		      	<td width="35%">
+      				<select name="city" lay-verify="required">
+			        	<option value=""></option>
+			        	<option value="0">全部</option>
+			        	<option value="1">干线</option>
+			        	<option value="2">周边</option>
+			        	<option value="3">省内</option>
+			        	<option value="4">临时</option>
+			        	<option value="4">市内</option>
+			      	</select>
+		      	</td>
+		      	<td class="layui-bg-gray" width="15%">线路类型</td>
+		      	<td width="35%">
+					<select name="city" lay-verify="required">
+			        	<option value=""></option>
+			        	<option value="0">线路名称</option>
+			        	<option value="1">线路名称</option>
+			        	<option value="2">线路名称</option>
+			        	<option value="3">线路名称</option>
+			        	<option value="4">线路名称</option>
+			      	</select>
+		      	</td>
+		      	
+		    </tr>
+		    <tr>
+		      	<td class="layui-bg-gray">车牌号</td>
+		      	<td>
+		      		<input type="text" name="title" placeholder="请输入车牌号" autocomplete="off" class="layui-input">
+		      	</td>
+		      	<td class="layui-bg-gray">承运商</td>
+		      	<td>
+		      		<input type="text" name="title" placeholder="请输入承运商" autocomplete="off" class="layui-input">
+		      	</td>
+		    </tr>
+		    <tr>
+		      	<td class="layui-bg-gray">车型</td>
+		      	<td>
+		      		<input type="text" name="title" placeholder="请输入车型" autocomplete="off" class="layui-input">
+		      	</td>
+		      	<td class="layui-bg-gray">司机</td>
+		      	<td>
+		      		<input type="text" name="title" placeholder="请输入司机" autocomplete="off" class="layui-input">
+		      	</td>
+		    </tr>
+		    <tr>
+		      	<td class="layui-bg-gray">电话</td>
+		      	<td>
+		      		<input type="text" name="title" placeholder="请输入电话" autocomplete="off" class="layui-input">
+		      	</td>
+		      	<td class="layui-bg-gray">吨控</td>
+		      	<td>
+		      		<input type="text" name="title" placeholder="请输入吨控" autocomplete="off" class="layui-input">
+		      	</td>
+		    </tr>
+		    
+		    <tr>
+		      	<td class="layui-bg-gray">备注</td>
+		      	<td colspan="3"> 
+					<textarea name="desc" placeholder="请输入备注信息" class="layui-textarea" style="min-height: 75px;"></textarea>
+		      	</td>
+		    </tr>
+		    <tr>
+		      	<td colspan="4">
+					<button class="layui-btn" style="background: #1da02b;">确定</button>
+					<button type="button" class="layui-btn layui-btn-primary">取消</button>
+		      	</td>
+		    </tr>
+	  	</tbody>
+	</table>
+	</form>
+	<script type="text/javascript" src="../../custom/jquery.min.js"></script>
+	<script type="text/javascript" src="../../layui/layui.js"></script>
+	<script type="text/javascript">
+        
+        //加载'form'模块，使checkbox、select、radio初始化
+        layui.use('form', function(){
+           
+        });
+      
+    </script>
+</body> 
+</html>
+    
+

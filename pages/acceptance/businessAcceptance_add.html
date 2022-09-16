@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>管理分区</title>
+    <link rel="stylesheet" type="text/css" href="../../layui/css/layui.css">
+</head>
+<body>
+	<form class="layui-form">
+	<table class="layui-table" style="width: 98%;margin: 1px auto;text-align: center;">
+	  	<tbody>
+		    <tr>
+		    	<td class="layui-bg-gray" width="13%">业务通知单号</td>
+		      	<td width="22%">
+      			     <input type="text" name="title" placeholder="请输入业务通知单号" autocomplete="off" class="layui-input" value="YWD1001" disabled>
+		      	</td>
+		      	<td class="layui-bg-gray" width="10%">客户编号</td>
+		      	<td width="22%">
+					         <input type="text" name="title" placeholder="请输入客户编号" autocomplete="off" class="layui-input" value="">
+		      	</td>
+		      	<td class="layui-bg-gray" width="10%">客户名称</td>
+		      	<td width="22%">
+					         <input type="text" name="title" placeholder="请输入客户名称" autocomplete="off" class="layui-input" value="">
+		      	</td>
+		    </tr>
+		    <tr>
+		      	<td class="layui-bg-gray">联系人</td>
+		      	<td>
+					         <input type="text" name="title" placeholder="请输入联系人" autocomplete="off" class="layui-input" value="">
+		      	</td>
+		      	<td class="layui-bg-gray">电话</td>
+		      	<td>
+  					       <input type="text" name="title" placeholder="请输入电话" autocomplete="off" class="layui-input" value="">
+		      	</td>
+		      	<td class="layui-bg-gray"></td>
+		      	<td>
+
+		      	</td>
+		    </tr>
+		    <tr>
+		        <td class="layui-bg-gray">取件地址</td>
+    	      <td colspan="5">
+		              <input type="text" name="title" placeholder="请输入取件地址" autocomplete="off" class="layui-input" value="">
+            </td>
+		    </tr>
+		    <tr>
+		      	<td class="layui-bg-gray">取件城市</td>
+		      	<td>
+					       <input type="text" name="title" placeholder="请输入取件城市" autocomplete="off" class="layui-input" value="">
+		      	</td>
+		      	<td class="layui-bg-gray">到达城市</td>
+		      	<td>
+					       <input type="text" name="title" placeholder="请输入到达城市" autocomplete="off" class="layui-input" value="">
+		      	</td>
+		      	<td class="layui-bg-gray">产品</td>
+		      	<td>
+              <select name="pro" lay-verify="required">
+                <option value=""></option>
+                <option value="0">手机</option>
+                <option value="1">电脑</option>
+                <option value="2">电脑</option>
+                <option value="3">电脑</option>
+                <option value="4">电脑</option>
+              </select>
+		      	</td>
+		    </tr>
+        <tr>
+		      	<td class="layui-bg-gray">预约取件时间</td>
+		      	<td>
+					       <input type="text" name="title" placeholder="请输入预约取件时间" autocomplete="off" class="layui-input" value="">
+		      	</td>
+		      	<td class="layui-bg-gray">品名</td>
+		      	<td>
+					       <input type="text" name="title" placeholder="请输入品名" autocomplete="off" class="layui-input" value="">
+		      	</td>
+		      	<td class="layui-bg-gray">重量</td>
+		      	<td>
+              <input type="text" name="title" placeholder="请输入重量" autocomplete="off" class="layui-input" value="">
+		      	</td>
+		    </tr>
+        <tr>
+		      	<td class="layui-bg-gray">体积</td>
+            <td>
+              <input type="text" name="title" placeholder="请输入体积" autocomplete="off" class="layui-input" value="">
+		      	</td>
+		      	<td class="layui-bg-gray">备注</td>
+		      	<td colspan="4">
+					       <input type="text" name="title" placeholder="请输入备注" autocomplete="off" class="layui-input" value="">
+		      	</td>
+		    </tr>
+
+		    <tr>
+		      	<td colspan="6">
+					     <button class="layui-btn" style="background: #1da02b;">确定</button>
+					     <button type="button" class="layui-btn layui-btn-primary">取消</button>
+		      	</td>
+		    </tr>
+	  	</tbody>
+	</table>
+	</form>
+	<script type="text/javascript" src="../../custom/jquery.min.js"></script>
+	<script type="text/javascript" src="../../layui/layui.js"></script>
+	<script type="text/javascript">
+
+        //加载'form'模块，使checkbox、select、radio初始化
+        layui.use('form', function(){
+
+        });
+
+    </script>
+</body>
+</html>
