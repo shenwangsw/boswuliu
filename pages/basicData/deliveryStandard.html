@@ -37,6 +37,13 @@
 						</select>
 					</div>
 			    </div>
+				
+				<div class="layui-inline">
+				    <label class="layui-form-label">操作人:</label>
+				    <div class="layui-input-block" style="width: 150px;">
+				     	<input type="text" name="title" placeholder="请输入操作人" autocomplete="off" class="layui-input">
+				    </div>
+				</div>
 
 				<!-- 查询按钮组 -->
 			    <div class="layui-inline">
@@ -72,20 +79,23 @@
 				    </div>
 			    </div>
 
-			    <div class="layui-inline">
-				    <label class="layui-form-label">操作人:</label>
-				    <div class="layui-input-block" style="width: 150px;">
-				     	<input type="text" name="title" placeholder="请输入操作人" autocomplete="off" class="layui-input">
-				    </div>
-			    </div>
+			    
 
 			    <div class="layui-inline">
-				    <label class="layui-form-label" >操作时间:</label>
+				    <label class="layui-form-label" >起始时间:</label>
 				    <div class="layui-input-block" style="width: 150px;">
-				     	<input id="opTime" type="text" name="title" placeholder="请输入操作时间" autocomplete="off" class="layui-input">
+				     	<span id="opTime" type="text" name="title" autocomplete="off" class="layui-input">
 				    </div>
 			    </div>
 			
+							
+				<div class="layui-inline">
+				    <label class="layui-form-label" >截止时间:</label>
+				    <div class="layui-input-block" style="width: 150px;">
+				     	<span id="opTimes" type="text" name="title" autocomplete="off" class="layui-input">
+				    </div>
+				</div>
+	
 			</div>
 
 			<!-- 操作按扭组 -->
@@ -274,6 +284,15 @@ layui.use('laydate', function(){
   //执行一个laydate实例
   laydate.render({
     elem: '#opTime' //指定元素
+  });
+});
+
+//加载'laydate'时间组件
+layui.use('laydate', function(){
+  var laydate = layui.laydate;
+  //执行一个laydate实例
+  laydate.render({
+    elem: '#opTimes' //指定元素
   });
 });
 
