@@ -55,8 +55,6 @@
 				<div class="layui-inline">
 					<button type="button" class="layui-btn layui-btn-small btnQuery" id="opDistribution">分配角色权限</button>
 					<button type="button" class="layui-btn layui-btn-small btnQuery" id="add">新增</button>
-					<button type="button" class="layui-btn layui-btn-small btnOther" id="edit">修改</button>
-					<button type="button" class="layui-btn layui-btn-small btnOther" id="opDelete">删除</button>
 				</div>
 			</div>
 
@@ -78,6 +76,7 @@
 				      	<th>角色名</th>
 				      	<th>角色描述</th>
 					  	<th>状态</th>
+						<th></th>
 				    </tr>
 			  	</thead>
 			  	<tbody>
@@ -88,6 +87,10 @@
 				      	<td>系统管理员</td>
 						<td>管理系统用户、角色与权限，保证系统正常运行</td>
 				      	<td>可用</td>
+						<td>
+							<button type="button" class="layui-btn layui-btn-small btnOther" id="edit">修改</button>
+							<button type="button" class="layui-btn layui-btn-small btnOther" id="opDelete">删除</button>
+						</td>
 				    </tr>
 					<tr>
 				      	<td><input type="checkbox" name="check" lay-skin="primary"></td>
@@ -96,6 +99,10 @@
 				      	<td>系统管理员</td>
 						<td>基础数据、受理、调度</td>
 				      	<td>可用</td>
+						<td>
+							<button type="button" class="layui-btn layui-btn-small btnOther" id="edit">修改</button>
+							<button type="button" class="layui-btn layui-btn-small btnOther" id="opDelete">删除</button>
+						</td>
 				    </tr>
 			  	</tbody>
 			</table>
