@@ -7,6 +7,8 @@
  * @param info
  *            弹出的信息。例如：用户名不能为空
  */
+
+let netUrl="http://175.178.44.54:12307"
 function message(eleName,info) {
 	layer.confirm(info, {
 		btn : [ '确定' ] // 按扭，可在[]内以逗号分隔开后依次添加多个按扭
