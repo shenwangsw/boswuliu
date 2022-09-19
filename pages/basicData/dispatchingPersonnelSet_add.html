@@ -12,22 +12,16 @@
 	  	<tbody>
 		    <tr>
 		    	<td class="layui-bg-gray" width="10%">员工工号</td>
-		      	<td width="23%">
-      				<select name="city" lay-verify="required">
-			        	<option value=""></option>
-			        	<option value="0">全部</option>
-			        	<option value="1">1001</option>
-			        	<option value="2">1002</option>
-			        	<option value="3">1003</option>
-			      	</select>
-		      	</td>
+				<td width="23%">
+					<input type="text" name="title" placeholder="请输入员工工号" autocomplete="off" class="layui-input" value="111">
+				</td>
 		      	<td class="layui-bg-gray" width="10%">员工名称</td>
 		      	<td width="23%">
-					<input type="text" name="title" placeholder="请输入员工名称" autocomplete="off" class="layui-input" value="张三" disabled>
+					<input type="text" name="title" placeholder="请输入员工名称" autocomplete="off" class="layui-input" value="张三">
 		      	</td>
 		      	<td class="layui-bg-gray" width="10%">手机号码</td>
 		      	<td width="23%">
-					<input type="text" name="title" placeholder="请输入手机号码" autocomplete="off" class="layui-input" value="18612345678">
+					<input type="text" name="title" id="phone" placeholder="请输入手机号码" autocomplete="off" class="layui-input" value="18612345678">
 		      	</td>
 		    </tr>
 		    <tr>
@@ -46,23 +40,15 @@
       				<input type="radio" name="pad" value="0" title="无">
 		      	</td>
 		      	<td class="layui-bg-gray">收派标准（公斤）</td>
-		      	<td>
-					<select name="city" lay-verify="required">
-			        	<option value=""></option>
-			        	<option value="1">0-50</option>
-			        	<option value="2">0-50</option>
-			      	</select>
+		      	<td width="23%">
+		      		<input type="text" name="title" placeholder="请输入收派标准（公斤） autocomplete="off" class="layui-input" value="1">
 		      	</td>
 		      	
 		    </tr>
 		    <tr>
 		    	<td class="layui-bg-gray">收派标准（长度）</td>
-		      	<td>
-					<select name="city" lay-verify="required">
-			        	<option value=""></option>
-			        	<option value="1">1</option>
-			        	<option value="2">2</option>
-			      	</select>
+		      	<td width="23%">
+		      		<input type="text" name="title" placeholder="请输入收派标准（长度） autocomplete="off" class="layui-input" value="1">
 		      	</td>
 		      	<td class="layui-bg-gray">车型</td>
 		      	<td>
@@ -81,7 +67,7 @@
 		      	</td>
 		      	<td class="layui-bg-gray">所属单位</td>
 		      	<td>
-					<input type="text" name="title" placeholder="请输入所属单位" autocomplete="off" class="layui-input" value="">
+					<input type="text" name="title" placeholder="请输入所属单位" autocomplete="off" class="layui-input" value="公司" disabled>
 		      	</td>
 		      	<td class="layui-bg-gray"></td>
 		      	<td>
@@ -105,6 +91,19 @@
         layui.use('form', function(){
            
         });
+		
+		var pattern = /0?(13|14|15|17|18|19)[0-9]{9}/;
+		
+		var phones = document.getElementById("phone")
+		
+		if(pattern.test(phones.value)==true){
+			phones.value = phones.value
+		}else{
+			phones.value = null;
+			alert("电话号码格式有误")
+		}
+
+		
       
     </script>
 </body> 
