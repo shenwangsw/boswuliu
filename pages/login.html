@@ -1,13 +1,15 @@
-<!DOCTYPE html> 
-<html lang="en"> 
-<head> 
-    <meta charset="utf-8"> 
-    <meta name="viewport" content="width=device-width, initial-scale=1"> 
-    <title>宅急送物流BOS系统</title> 
-    <link rel="stylesheet" href="css/base.css">
-    <link rel="stylesheet" href="css/login/login.css">
+<!DOCTYPE html>
+<html lang="en">
 
-</head> 
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>宅急送物流BOS系统</title>
+	<link rel="stylesheet" href="css/base.css">
+	<link rel="stylesheet" href="css/login/login.css">
+
+</head>
+
 <body class="default">
 	<div class="login-hd">
 		<div class="left-bg"></div>
@@ -23,7 +25,9 @@
 			<div class="inner-wrap">
 				<div class="lg-zone">
 					<div class="lg-box">
-						<div class="lg-label"><h4>用户登录</h4></div>
+						<div class="lg-label">
+							<h4>用户登录</h4>
+						</div>
 						<!-- "用户名、密码"不能为空提示 -->
 						<!-- 
 							<div class="alert alert-error">
@@ -34,24 +38,24 @@
 						<form>
 							<div class="lg-username input-item clearfix">
 								<i class="iconfont">&#xe60d;</i>
-								<input type="text" placeholder="账号/邮箱">
+								<input type="text" placeholder="账号/邮箱" class="username">
 							</div>
 							<div class="lg-password input-item clearfix">
 								<i class="iconfont">&#xe634;</i>
-								<input type="password" placeholder="请输入密码">
+								<input type="password" placeholder="请输入密码" class="password">
 							</div>
 							<div class="lg-check clearfix">
 								<div class="input-item">
 									<i class="iconfont">&#xe633;</i>
-									<input type="text" placeholder="验证码">
+									<input type="text" placeholder="验证码" class="code">
 								</div>
-								<img class="code" src="http://192.168.137.101:9000/sy/code">
+								<img class="code codeImg" src="" >
 							</div>
 							<div class="tips clearfix">
 								<label><input type="checkbox" checked="checked">记住用户名</label>
 							</div>
 							<div class="enter">
-								<a href="javascript:;" class="supplier" onClick="javascript:window.location='main.html'">登&nbsp;&nbsp;&nbsp;&nbsp;录</a>
+								<a class="userLogin supplier">登&nbsp;&nbsp;&nbsp;&nbsp;录</a>
 							</div>
 						</form>
 					</div>
@@ -68,13 +72,62 @@
 				<a href="javascript:void(0);">服务条款</a>
 				<a href="javascript:void(0);">联系方式</a>
 			</div>
-			<div class="address">地址：湖南省长沙市岳麓区&nbsp;邮编：410006&nbsp;&nbsp;Copyright&nbsp;©&nbsp;2010&nbsp;-&nbsp;2020&nbsp;硅谷数科&nbsp;版权所有</div>
+			<div class="address">
+				地址：湖南省长沙市岳麓区&nbsp;邮编：410006&nbsp;&nbsp;Copyright&nbsp;©&nbsp;2010&nbsp;-&nbsp;2020&nbsp;硅谷数科&nbsp;版权所有
+			</div>
 			<div class="other-info">建议使用IE8及以上版本浏览器&nbsp;联系电话：</div>
 		</div>
 	</div>
-</body> 
-</html>
-    
-<script type="text/javascript">
+</body>
+<!-- <form action="http://175.178.44.54:12307/sy/emp/login">
+	<input type="text" value="admin" name="username">
+	<input type="text" value="admin123" name="password">
 
+	<input type="submit" value="denglu" name="username">
+
+</form> -->
+
+</html>
+
+<script type="text/javascript" src="../custom/jquery.min.js"></script>
+<script type="text/javascript" src="./js/common.js"></script>
+<script type="text/javascript">
+	let url = netUrl + "/sy/code"
+
+	$(function(){
+		$(".codeImg").attr("src", url)
+		$(".userLogin").click(
+			function () {
+				let username = $(".username").val();
+				let password = $(".password").val();
+				let code = $(".code").val();
+				if (username == "" || password == "" || code == "") {
+					alert("用户或者密码验证码不能为空")
+				}
+				else {
+					let jso ={
+							username:username,
+							password:password,
+							code:code
+						}
+					$.ajax({
+						method:"post",
+						url:netUrl+"/sy/emp/login",
+						contentType:"application/json",
+						dataType:"json",
+						data:JSON.stringify(jso),
+						// crossDomain:true,
+						// xhrFields:{
+						// 	withCredentials:true
+						// },
+						success:function(isdat){
+							localStorage.token = isdat.data;
+						}
+					}
+					)
+				}
+
+			}
+		)
+	})
 </script>
