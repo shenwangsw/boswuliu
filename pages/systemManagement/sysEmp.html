@@ -25,18 +25,7 @@
 				    	<input type="text" name="title" placeholder="请输入员工姓名" autocomplete="off" class="layui-input">
 				    </div>
 			    </div>
-
-			    <div class="layui-inline">
-				    <label class="layui-form-label" >是否可用:</label>
-				    <div class="layui-input-block" style="width: 150px;">
-						<select name="city" lay-verify="">
-							<option value="">请选择原因</option>
-							<option value="1">是</option>
-							<option value="0">否</option>
-						</select>
-					</div>
-			    </div>
-
+				
 				<!-- 查询按钮组 -->
 			    <div class="layui-inline">
 					<button type="button" class="layui-btn btnQuery">
@@ -54,8 +43,6 @@
 			<div class="layui-form-item" style="padding-left: 11px;height: 30px;">
 				<div class="layui-inline">
 					<button type="button" class="layui-btn layui-btn-small btnQuery" id="add">新增</button>
-					<button type="button" class="layui-btn layui-btn-small btnOther" id="edit">修改</button>
-					<button type="button" class="layui-btn layui-btn-small btnOther" id="opDelete">删除</button>
 				</div>
 			</div>
 
@@ -75,18 +62,23 @@
 				    	<th>序号</th>
 				      	<th>编号</th>
 				      	<th>用户名</th>
-				      	<th>角色</th>
+				      	<th>单位名称</th>
 					  	<th>状态</th>
+						<th></th>
 				    </tr>
 			  	</thead>
 			  	<tbody>
 				    <tr>
 				      	<td><input type="checkbox" name="check" lay-skin="primary"></td>
 				      	<td>1</td>
-				      	<td>1001</td>
+				      	<td><a style="text-decoration:underline;cursor: pointer;" id="rolelook">111</a></td>
 				      	<td>admin</td>
-						<td>系统管理员</td>
+						<td>总公司</td>
 				      	<td>可用</td>
+						<td>
+							<button type="button" class="layui-btn layui-btn-small btnOther" id="edit">修改</button>
+							<button type="button" class="layui-btn layui-btn-small btnOther" id="opDelete">删除</button>
+						</td>
 				    </tr>
 			  	</tbody>
 			</table>
@@ -178,6 +170,19 @@ $(function(){
 			content: 'sysEmp_edit.html'
 		});
 	});
+	
+	//修改
+	$('#rolelook').click(function(){
+		//页面层
+		layer.open({
+			title: ['角色信息查看', 'color:#fff;background:#1da02b;'],
+			type: 2,
+			//skin: 'layui-layer-rim', //加上边框
+			area: ['690px', '440px'], //宽高
+			content: 'rolelook.html'
+		});
+	});
+	
 
 
 });
