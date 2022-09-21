@@ -141,7 +141,7 @@
             </div>
 
             <!-- 数据表格 -->
-            <table class="layui-table">
+            <table id="test" class="layui-table">
                 <colgroup>
                     <col width="50">
                     <col width="60">
@@ -173,56 +173,8 @@
                     <th>收件人</th>
                 </tr>
                 </thead>
-                <tbody>
-                <tr>
-                    <td><input type="checkbox" name="check" lay-skin="primary"></td>
-                    <td>1</td>
-                    <td>ZZD1001</td>
-                    <td>KFD1001</td>
-                    <td>手机</td>
-                    <td>CSX</td>
-                    <td>长沙</td>
-                    <td>YWTZD1001</td>
-                    <td>GH1001</td>
-                    <td>王五</td>
-                    <td>2017-11-11 11:11:11</td>
-                    <td>李四</td>
-                    <td>张三</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" name="check" lay-skin="primary"></td>
-                    <td>2</td>
-                    <td>ZZD1001</td>
-                    <td>KFD1001</td>
-                    <td>手机</td>
-                    <td>CSX</td>
-                    <td>长沙</td>
-                    <td>YWTZD1001</td>
-                    <td>GH1001</td>
-                    <td>王五</td>
-                    <td>2017-11-11 11:11:11</td>
-                    <td>李四</td>
-                    <td>张三</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" name="check" lay-skin="primary"></td>
-                    <td>3</td>
-                    <td>ZZD1001</td>
-                    <td>KFD1001</td>
-                    <td>手机</td>
-                    <td>CSX</td>
-                    <td>长沙</td>
-                    <td>YWTZD1001</td>
-                    <td>GH1001</td>
-                    <td>王五</td>
-                    <td>2017-11-11 11:11:11</td>
-                    <td>李四</td>
-                    <td>张三</td>
-                </tr>
-
                 </tbody>
             </table>
-			<div id="ApartAge"></div>
     </div>
     </form>
 </div>
@@ -231,6 +183,45 @@
 <script type="text/javascript" src="../../layer/layer.js"></script>
 <script type="text/javascript" src="../../layui/layui.js"></script>
 <script type="text/javascript">
+	
+	layui.use('table',function(){
+	  		var table = layui.table;
+	  	
+	  	table.render({
+	  		elem :'#test'
+	  		,url : 'http://175.178.44.54:12307/accWorkorder'
+				,parseData:function(res) {
+					console.log(res.data.records)
+					return {
+						"code": res.status,
+						"msg": res.msg,
+						"count": res.data.total,
+						"data": res.data.records
+					}
+				}
+	  		,cols:[[
+			{field: 'id',width:100, title:'序号'}
+	  		,{field: 'businessnoticeno',width:250, title:'工作单号'}
+	  		,{field: 'jobno',width:135, title:'工作编号'}
+	  		,{field: 'jobtype',width:135, title:'工作类型'}
+			,{field: 'pickupstatus',width:260, title:'取件状态'}
+			,{field: 'pickuptime',width:260, title:'取件时间'}
+			,{width:135, title:'操作'}
+	  		]],
+			response: {
+				statusCode: 200 //成功的状态码，默认：0
+			}
+	  		,page : true
+	  		,limit : 6,
+			done:function (res, curr, count) {
+				console.log('a')      
+			}		
+	  	}); 
+	  	
+		/* response: {
+			statusCode: 200
+		}, */
+	});
 	
 	layui.use(['laypage', 'layer'], function(){
 		  var laypage = layui.laypage

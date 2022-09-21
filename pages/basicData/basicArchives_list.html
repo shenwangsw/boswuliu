@@ -25,49 +25,11 @@
 			
 
 			<!-- 数据表格 -->
-			<table class="layui-table">
-				<colgroup>
-				    <col width="50">
-				    <col width="60">
-				    <col width="100">
-				    <col width="90">
-				    <col width="60">
-				    <col width="100">
-				    <col width="80">
-				    <col width="170">
-				    <col  width="100">
-			  	</colgroup>
-			  	<thead>
-				    <tr>
-				    	<th><input type="checkbox" name="check" lay-skin="primary"></th>
-				    	<th>序号</th>
-				      	<th>档案名称</th>
-				      	<th>上级编码</th>
-				      	<th>封存标志</th>
-					  	<th>操作人员</th>
-					  	<th>操作单位</th>
-					  	<th>操作时间</th>
-					  	<th>备注</th>
-						<th>操作</th>
-				    </tr> 
-			  	</thead>
-			  	<tbody>
-				    <tr>
-				      	<td><input type="checkbox" name="check" lay-skin="primary"></td>
-				      	<td>1</td>
-				      	<td>档案名称</td>
-				      	<td>BH001</td>
-				      	<td>否</td>
-				      	<td>张三</td>
-				      	<td>总公司</td>
-				      	<td>2017-10-17 14:31:31</td>
-				      	<td>档案备注信息</td>
+			<table id="test" class="layui-table">
 						<td>
 							<button type="button" class="layui-btn layui-btn-small btnOther" id="opUpdate">编辑</button>
 							<button type="button" class="layui-btn layui-btn-small btnOther" id="opUpdate">作废</button>
 						</td>
-				    </tr>
-				 
 			  	</tbody>
 			</table>
 		</div>
@@ -77,6 +39,38 @@
 <script type="text/javascript" src="../../custom/jquery.min.js"></script>
 <script type="text/javascript" src="../../layui/layui.js"></script>
 <script type="text/javascript">     
+
+layui.use('table',function(){
+     	var table = layui.table;  	
+     	table.render({
+     		elem :'#test'
+     		,url : 'http://175.178.44.54:12307/basBasicArchivesEntry/1'
+			,parseData:function(res) {
+				console.log(res.data.records)
+				return {
+					"code": res.status,
+					"msg": res.msg,
+					"count": res.data.total,
+					"data": res.data
+				}
+			}
+     		,cols:[[	
+   			{field: 'id',width:100, title:'序号'}
+     		,{field: 'name',width:250, title:'档案名称'}
+     		,{field: 'parentId',width:135, title:'上级编码'}
+     		,{field: 'available',width:135, title:'是否封存'}
+   			,{field: 'remarks',width:135, title:'备注'}
+   			,{field: 'operatorId',width:135, title:'操作人员'}
+   			,{field: 'operationUnitId',width:260, title:'操作单位'}
+			,{field: 'operationTime',width:260, title:'操作时间'}
+   			,{width:135, title:'操作', toolbar:"#btn"}
+     		]],
+			response: {
+						statusCode: 200 //成功的状态码，默认：0
+					}
+     	}); 
+   });
+
 //加载'form'模块，使checkbox、select、radio初始化
 layui.use('form', function(){
    

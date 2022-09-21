@@ -73,49 +73,9 @@
 			</div>
 
 			<!-- 数据表格 -->
-			<table class="layui-table">
-				<colgroup>
-					<col width="50">
-				    <col width="65">
-				    <col width="150">
-				    <col width="150">
-				    <col width="150">
-				    <col width="150">
-				    <col width="150">
-				    <col>
-			  	</colgroup>
-			  	<thead>
-				    <tr>
-				    	<th><input type="checkbox" name="check" lay-skin="primary"></th>
-				    	<th>序号</th>
-				      	<th>定区编码</th>
-				      	<th>定区名称</th>
-				      	<th>定区负责人</th>
-				      	<th>联系电话</th>
-				      	<th>所属单位</th>
-				      	<th>操作</th>
-				    </tr>
-			  	</thead>
-			  	<tbody>
-				    <tr>
-				      	<td><input type="checkbox" name="check" lay-skin="primary"></td>
-				      	<td>1</td>
-				      	<td>DQ001</td>
-				      	<td>朝阳区北五环</td>
-				      	<td>老王</td>
-				      	<td>18612345678</td>
-				      	<td>朝阳分部</td>
-				      	<td>
-							<button type="button" class="layui-btn layui-btn-small btnQuery">查看客户信息</button>
-						</td>
-						<td>
-							<button type="button" class="layui-btn layui-btn-small btnOther" id="opUpdate">编辑</button>
-							<button type="button" class="layui-btn layui-btn-small btnOther" id="opDelete">删除</button>
-						</td>
-				    </tr>
-			  	</tbody>
+			<table id="tesst" class="layui-table">
+				
 			</table>
-			<div id="ApartAge"></div>
 		</div>
 		</form>
 	</div>
@@ -139,22 +99,6 @@
            console.log(obj)
          }
        });
-  	
-  	//调用分页
-  	  laypage.render({
-  	    count: data.length
-  	    ,jump: function(obj){
-  	      //模拟渲染
-  	      document.getElementById('biuuu_city_list').innerHTML = function(){
-  	        var arr = []
-  	        ,thisData = data.concat().splice(obj.curr*obj.limit - obj.limit, obj.limit);
-  	        layui.each(thisData, function(index, item){
-  	          arr.push('<li>'+ item +'</li>');
-  	        });
-  	        return arr.join('');
-  	      }();
-  	    }
-  	  });
   });
   
 //加载'form'模块，使checkbox、select、radio初始化

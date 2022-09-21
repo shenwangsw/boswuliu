@@ -29,12 +29,6 @@ var SystemMenu = [{
 		},{
 			title: '管理分区',
 			href: 'basicData/partition.html'
-		},{
-			title: '管理定区',
-			href: 'basicData/zone.html'
-		},{
-			title: '收派时间管理',
-			href: 'basicData/deliveryTime.html'
 		}]
 	},{
 		title: '权限管理',
@@ -67,10 +61,10 @@ var SystemMenu = [{
 		},{
 			title: '工作单快速录入',
 			href: 'acceptance/worksheetQuickInput.html'
-		},{
+		}/* ,{
 			title: '工作单查询',
 			href: 'acceptance/worksheetQuery.html'
-		}]
+		} */]
 	},{
 		title: '调度',
 		icon: '&#xe62f;',
