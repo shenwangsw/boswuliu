@@ -1,84 +1,147 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>栏目</title>
 	<link rel="stylesheet" type="text/css" href="../../layui/css/layui.css">
 </head>
+
 <body>
-<div class="layui-form">
-	<div class="layui-tab layui-tab-brief">
-		<ul class="layui-tab-title">
-			<li class="layui-this">修改栏目</li>
-		</ul>
-		<div class="layui-tab-content" style="height: 100px;">
-			<div class="layui-tab-item layui-show">
-				<table class="layui-table" style="width: 98%;margin: 1px auto;text-align: center;">
-					<tbody>
-					<tr>
-						<td class="layui-bg-gray" width="20%">上级栏目</td>
-						<td width="30%">
-							<select name="city" lay-verify="">
-								<option value="">请选择</option>
-								<option value="1">无</option>
-								<option value="0">权限管理</option>
-							</select>
-						</td>
-						<td class="layui-bg-gray" width="20%">栏目名称</td>
-						<td width="30%">
-							<input type="text" name="title" placeholder="请输入栏目名称" autocomplete="off" class="layui-input">
-						</td>
-					</tr>
-					
-					<tr>
-						<td class="layui-bg-gray">栏目类型</td>
-						<td >
-							<input type="text" name="title" placeholder="请输入栏目类型" autocomplete="off" class="layui-input">
-						</td>
-						<td class="layui-bg-gray">栏目提示语</td>
-						<td>
-							<input type="text" name="title" placeholder="请输入栏目提示语" autocomplete="off" class="layui-input">
-						</td>
-					</tr>
-					
-					<tr>
-						<td class="layui-bg-gray">栏目地址</td>
-						<td colspan="3">
-							<input type="text" name="title" placeholder="请输入栏目地址" autocomplete="off" class="layui-input">
-						</td>
-					</tr>
-					
-					<tr>
-						<td colspan="6">
-							<button class="layui-btn" style="background: #1da02b;">确定</button>
-							<button type="button" class="layui-btn layui-btn-primary">取消</button>
-						</td>
-					</tr>
-					</tbody>
-				</table>
+	<div class="layui-form">
+		<div class="layui-tab layui-tab-brief">
+			<ul class="layui-tab-title">
+				<li class="layui-this">修改栏目</li>
+			</ul>
+			<div class="layui-tab-content" style="height: 100px;">
+				<div class="layui-tab-item layui-show">
+					<table class="layui-table" style="width: 98%;margin: 1px auto;text-align: center;"
+						lay-filter="MenuForm">
+						<tbody>
+							<tr>
+								<td class="layui-bg-gray" width="20%">上级栏目</td>
+								<td width="30%">
+									<!-- <select name="city" lay-verify="" class="parentName">
+										<option value="">请选择</option>
+										<option value="1">无</option>
+										<option value="0">权限管理</option>
+
+									</select> -->
+									<!-- <input type="text" name="title" placeholder="请输入上级栏目" autocomplete="off"
+										class="layui-input parentName"> -->
+								</td>
+								<td class="layui-bg-gray" width="20%">栏目名称</td>
+								<td width="30%">
+									<input type="text" name="title" placeholder="请输入栏目名称" autocomplete="off"
+										class="layui-input tip">
+								</td>
+							</tr>
+							<tr>
+								<td class="layui-bg-gray">栏目类型</td>
+								<td>
+									<input type="text" name="title" placeholder="请输入栏目类型" autocomplete="off"
+										class="layui-input type">
+								</td>
+								<td class="layui-bg-gray">栏目提示语</td>
+								<td>
+									<input type="text" name="title" placeholder="请输入栏目提示语" autocomplete="off"
+										class="layui-input text">
+								</td>
+							</tr>
+							<tr>
+								<td class="layui-bg-gray">栏目地址</td>
+								<td colspan="3">
+									<input type="text" name="title" placeholder="请输入栏目地址" autocomplete="off"
+										class="layui-input url">
+								</td>
+							</tr>
+							<tr>
+								<td colspan="6">
+									<button class="layui-btn edits" style="background: #1da02b; "
+										lay-filter="book">确定</button>
+									<button type="button" class="layui-btn layui-btn-primary closeLayer">取消</button>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
 			</div>
-
 		</div>
+
 	</div>
+	<script type="text/javascript" src="../../custom/jquery.min.js"></script>
+	<script type="text/javascript" src="../../layui-v2.7.6/layui-v2.7.6/layui/layui.js"></script>
+	<script type="text/javascript" src="../../pages/js/common.js"></script>
+	<script type="text/javascript">
 
-</div>
-<script type="text/javascript" src="../../custom/jquery.min.js"></script>
-<script type="text/javascript" src="../../layui/layui.js"></script>
-<script type="text/javascript">
+		//加载'form'模块，使checkbox、select、radio初始化
+		row = parent.rowData
 
-	//加载'form'模块，使checkbox、select、radio初始化
-	layui.use('form', function(){
+		//注意：选项卡 依赖 element 模块，否则无法进行功能性操作
+		layui.use('element', function () {
+			var element = layui.element;
 
-	});
+			//…
+		});
+		let layer, $, form;
+		layui.use(['layer', 'jquery', 'form'], function () {
+			layer = layui.layer, $ = layui.jquery, form = layui.form;
+			//初始化form中数据的方法
+			initForm();
+			$(".edits").click(function () {
+				console.log("我要修改")
+				//$(".parentName option[text="+row.parentName+"]").attr("selected", true);
+				let jso = {
+					id: row.id,
+					parentId: $(".parentId").val(),
+					type: $(".type").val(),
+					tip: $(".tip").val(),
+					url: $(".url").val(),
+					text: $(".text").val()
+				}
+				$.ajax({
+					method: "put",
+					url: netUrl + "/sy/menu",
+					contentType: "application/json",
+					dataType: "json",
+					data: JSON.stringify(jso),
+					// crossDomain:true,
+					// xhrFields:{
+					// 	withCredentials:true
+					// },
+					success: function (isdat) {
+						console.log(isdat)
+						window.parent.layer.closeAll()
+						window.parent.table.reloadData('demo', {})
+					}
+				})
 
-	//注意：选项卡 依赖 element 模块，否则无法进行功能性操作
-	layui.use('element', function(){
-		var element = layui.element;
+			})
+			$(".closeLayer").click(function () {
+				console.log("修改")
+				window.parent.layer.closeAll()
+			})
 
-		//…
-	});
+		});
 
-</script>
+		//初始化页面数据的方法，如果row有数据，那么说明为修改操作，如果row没有数据，说明新增
+		//select distinct booktype from t_book 查询去重复
+		function initForm() {
+
+			console.log(parent.rowData)
+			$(".id").val(row.id)
+			$(".parentId").val(row.parentId)
+			$(".parentName").val(row.parentName)
+			//$(".parentName option[text="+row.parentName+"]").attr("selected", true);
+			$(".type").val(row.type)
+			$(".tip").val(row.tip)
+			$(".url").val(row.url)
+			$(".text").val(row.text)
+			//console.log($.extend({},parent.rowData||{}))
+			//form.val("MenuForm", $.extend({}, parent.rowData || {}));
+		}
+	</script>
 </body>
+
 </html>
