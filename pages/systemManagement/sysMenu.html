@@ -97,6 +97,7 @@
 				elem: '#demo'
 				, height: 300
 				, url: netUrl + '/sy/menu' //数据接口（此处为静态数据，仅作演示）
+				,toolbar:"#"
 				, page: {
 					elem: "ApartAge",
 					limit: 2,
@@ -150,16 +151,12 @@
 				if (layEvent === 'detail') { //查看
 					//do somehing
 				} else if (layEvent === 'del') { //删除
-					layer.confirm('确定删除吗？', function (index) {
-						obj.del(); // 删除对应行（tr）的 DOM 结构，并更新缓存
-						layer.close(index);
-						// 向服务端发送删除请求，执行完毕后，可通过 reloadData 方法完成数据重载
-						/*
+					
 						table.reloadData(id, {
 						  scrollPos: 'fixed'  // 保持滚动条位置不变 - v2.7.3 新增
 						});
-						*/
-					});
+					
+				
 				} else if (layEvent === 'edit') { //编辑
 					console.log("编辑")
 					layer.open({

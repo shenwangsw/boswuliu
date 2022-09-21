@@ -6,6 +6,11 @@
 <title>单位管理</title>
 <link rel="stylesheet" type="text/css" href="../../layui/css/layui.css">
 <link rel="stylesheet" type="text/css" href="../css/page.css">
+<style>
+	.layui-table-view {
+		height: 325px !important;
+	}
+</style>
 </head>
 <body>
 <!-- 外部整体 -->
@@ -47,116 +52,132 @@
 			</div>
 
 			<!-- 数据表格 -->
-			<table class="layui-table">
-				<colgroup>
-					<col width="50">
-				    <col width="60">
-				    <col >
-				    <col >
-				    <col >
-				    <col >
-			  	</colgroup>
-			  	<thead>
-				    <tr>
-				    	<th><input type="checkbox" name="check" lay-skin="primary"></th>
-				    	<th>序号</th>
-				      	<th>编号</th>
-				      	<th>单位名称</th>
-				      	<th>备注</th>
-					  	<th>操作人员</th>
-						<th>操作时间</th>
-						<th></th>
-				    </tr>
-			  	</thead>
-			  	<tbody>
-				    <tr>
-				      	<td><input type="checkbox" name="check" lay-skin="primary"></td>
-				      	<td>1</td>
-				      	<td>1001</td>
-				      	<td>总公司</td>
-						<td>总公司员工</td>
-				      	<td>二狗</td>
-						<td>2017-12-23 17:11:20</td>
-						<td>
-							<button type="button" class="layui-btn layui-btn-small btnOther" id="edit">修改</button>
-							<button type="button" class="layui-btn layui-btn-small btnOther" id="opDelete">删除</button>
-						</td>
-				    </tr>
-					<tr>
-				      	<td><input type="checkbox" name="check" lay-skin="primary"></td>
-				      	<td>2</td>
-				      	<td>1002</td>
-				      	<td>长沙公司</td>
-						<td>长沙公司员工</td>
-				      	<td>张三</td>
-						<td>2017-12-23 17:11:20</td>
-						<td>
-							<button type="button" class="layui-btn layui-btn-small btnOther" id="edit">修改</button>
-							<button type="button" class="layui-btn layui-btn-small btnOther" id="opDelete">删除</button>
-						</td>
-				    </tr>
-			  	</tbody>
+			
+			<!-- 数据表格 -->
+			<table class="layui-table" id="demo" lay-filter="test">
+				
 			</table>
+		
+			<!-- 操作按扭组 -->
+			<div class="layui-form-item" style="padding-left: 11px;height: 30px;display: none;" id="linetool">
+				<div class="layui-inline">
+					<button type="button" class="layui-btn layui-btn-small btnOther" id="edit" lay-event="edit" >修改</button>
+					<button type="button" class="layui-btn layui-btn-small btnOther" id="opDelete" lay-event="del">删除</button>
+				</div>
+			</div>
 			<div id="ApartAge"></div>
 		</div>
 		</form>
 	</div>
 </div>
 <script type="text/javascript" src="../../custom/jquery.min.js"></script>
-<script type="text/javascript" src="../../layer/layer.js"></script>
-<script type="text/javascript" src="../../layui/layui.js"></script>
+	<script type="text/javascript" src="../js/common.js"></script>
+	<script type="text/javascript" src="../../layer/layer.js"></script>
+	<script type="text/javascript" src="../../layui-v2.7.6/layui-v2.7.6/layui/layui.js"></script>
 <script type="text/javascript">
-	
-	layui.use(['laypage', 'layer'], function(){
-		  var laypage = layui.laypage
-		  ,layer = layui.layer;
-		  
-	   //完整功能
-	     laypage.render({
-	       elem: 'ApartAge'
-	       ,count: 6 //条数
-		   ,limit:6//每页的数据量
-	       ,layout: ['count', 'prev', 'page', 'next', 'limit', 'refresh', 'skip']
-	       ,jump: function(obj){
-	         console.log(obj)
-	       }
-	     });
-		
-		//调用分页
-		  laypage.render({
-		    count: data.length
-		    ,jump: function(obj){
-		      //模拟渲染
-		      document.getElementById('biuuu_city_list').innerHTML = function(){
-		        var arr = []
-		        ,thisData = data.concat().splice(obj.curr*obj.limit - obj.limit, obj.limit);
-		        layui.each(thisData, function(index, item){
-		          arr.push('<li>'+ item +'</li>');
-		        });
-		        return arr.join('');
-		      }();
-		    }
-		  });
-	});
-	
-//加载'form'模块，使checkbox、select、radio初始化
-layui.use('form', function(){
+	let laypage = null
+		let layer = null
+		var table = null
+		var rowData = null
+		layui.use(['laypage', 'layer'], function () {
+			laypage = layui.laypage
+				, layer = layui.layer;
+			//完整功能
+			//调用分页
+		});
 
-});
+		layui.use('form', function () {
 
-//加载'table'组件
-layui.use('table', function(){
-  var table = layui.table;
-});
-
-//加载'laydate'时间组件
-layui.use('laydate', function(){
-  var laydate = layui.laydate;
-  //执行一个laydate实例
-  laydate.render({
-    elem: '#opTime' //指定元素
-  });
-});
+		});
+		//加载'table'组件
+		layui.use('table', function () {
+			table = layui.table;
+			table.render({
+				elem: '#demo'
+				, height: 300
+				, url: netUrl + '/sy/unit' //数据接口（此处为静态数据，仅作演示）
+				,toolbar:"#"
+				, page: {
+					elem: "ApartAge",
+					limit: 2,
+					jump: function (obj, first) {
+						console.log(obj, first)
+					},
+					limits: [5]
+				},//开启分页,
+				limit: 2,
+				dataType: "json",
+				// headers:{
+				// 	token:localStorage.token
+				// },
+				where: {
+					token: localStorage.token
+				},
+				parseData: function (res) {
+					console.log(res.data.records)
+					return {
+						"code": res.status, //解析接口状态
+						"msg": res.msg, //解析提示文本
+						"count": res.data.total, //解析数据长度wq
+						"data": res.data.records //解析数据列表
+					}
+				},
+				request: {
+					pageName: 'page' //页码的参数名称，默认：page
+					, limitName: 'size' //每页数据量的参数名，默认：limit
+				},
+				response: {
+					statusCode: 200,
+				},
+				
+				     	  	
+				cols: [[ //表头
+					{ field: 'id', title: '编号', width: 80, sort: true, }
+					, { field: 'name', title: '单位名称', width: 80, sort: true }
+					, { field: 'operationTime', title: '操作时间', width: 90, sort: true }
+					, { field: 'operatorId', title: '栏目类型', width: 80, sort: true }
+					, { field: 'operatorName', title: '操作人员', width: 80, sort: true, }
+					, { field: 'remarks', title: '备注', width: 150 }
+					
+					, { fixed: '', title: '操作', width: 150, align: 'center', toolbar: '#linetool' }
+				]]
+			});
+			table.on('tool(test)', function (obj) { // 注：test 是 table 原始标签的属性 lay-filter="对应的值"
+				console.log("下面是OBJ")
+				console.log(obj)
+				rowData = obj.data
+			var data = obj.data; //获得当前行数据
+				var layEvent = obj.event; //获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
+				var tr = obj.tr; //获得当前行 tr 的 DOM 对象（如果有的话）
+				if (layEvent === 'detail') { //查看
+					//do somehing
+				} else if (layEvent === 'del') { //删除	
+						table.reloadData(id, {
+						  scrollPos: 'fixed'  // 保持滚动条位置不变 - v2.7.3 新增
+						});
+				} else if (layEvent === 'edit') { //编辑
+					console.log("编辑")
+					layer.open({
+					title: ['修改', 'color:#fff;background:#1da02b;'],
+					type: 2,
+					//skin: 'layui-layer-rim', //加上边框
+					area: ['690px', '340px'], //宽高
+					content: 'sysMenu_edit.html'
+				});
+					// table.reloadData(id, {
+					//   scrollPos: 'fixed'  // 保持滚动条位置不变 - v2.7.3 新增
+					// });
+				}
+			});
+		});
+		//加载'laydate'时间组件
+		layui.use('laydate', function () {
+			var laydate = layui.laydate;
+			//执行一个laydate实例
+			laydate.render({
+				elem: '#opTime' //指定元素
+			});
+		});
 
 $(function(){
 	//显示、隐藏剩余的查询条件

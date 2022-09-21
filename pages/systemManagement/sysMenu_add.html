@@ -27,32 +27,32 @@
 						</td>
 						<td class="layui-bg-gray" width="20%">栏目名称</td>
 						<td width="30%">
-							<input type="text" name="title" placeholder="请输入栏目名称" autocomplete="off" class="layui-input">
+							<input type="text" name="title" placeholder="请输入栏目名称" autocomplete="off" class="layui-input tip">
 						</td>
 					</tr>
 					
 					<tr>
 						<td class="layui-bg-gray">栏目类型</td>
 						<td >
-							<input type="text" name="title" placeholder="请输入栏目类型" autocomplete="off" class="layui-input">
+							<input type="text" name="title" placeholder="请输入栏目类型" autocomplete="off" class="layui-input type">
 						</td>
 						<td class="layui-bg-gray">栏目提示语</td>
 						<td>
-							<input type="text" name="title" placeholder="请输入栏目提示语" autocomplete="off" class="layui-input">
+							<input type="text" name="title" placeholder="请输入栏目提示语" autocomplete="off" class="layui-input text">
 						</td>
 					</tr>
 					
 					<tr>
 						<td class="layui-bg-gray">栏目地址</td>
 						<td colspan="3">
-							<input type="text" name="title" placeholder="请输入栏目地址" autocomplete="off" class="layui-input">
+							<input type="text" name="title" placeholder="请输入栏目地址" autocomplete="off" class="layui-input url">
 						</td>
 					</tr>
 					
 					<tr>
 						<td colspan="6">
-							<button class="layui-btn" style="background: #1da02b;">确定</button>
-							<button type="button" class="layui-btn layui-btn-primary">取消</button>
+							<button class="layui-btn insert" style="background: #1da02b; ">确定</button>
+							<button type="button" class="layui-btn layui-btn-primary closeLayer" >取消</button>
 						</td>
 					</tr>
 					</tbody>
@@ -63,6 +63,7 @@
 	</div>
 
 </div>
+<script type="text/javascript" src="../../pages/js/common.js"></script>
 <script type="text/javascript" src="../../custom/jquery.min.js"></script>
 <script type="text/javascript" src="../../layui/layui.js"></script>
 <script type="text/javascript">
@@ -78,7 +79,38 @@
 
 		//…
 	});
+	$(".insert").click(function () {
+				console.log("添加")
+				//$(".parentName option[text="+row.parentName+"]").attr("selected", true);
+				let jso = {
+					parentId: $(".parentId").val(),
+					type: $(".type").val(),
+					tip: $(".tip").val(),
+					url: $(".url").val(),
+					text: $(".text").val()
+				}
+				$.ajax({
+					method: "post",
+					url: netUrl + "/sy/menu",
+					contentType: "application/json",
+					dataType: "json",
+					data: JSON.stringify(jso),
+					// crossDomain:true,
+					// xhrFields:{
+					// 	withCredentials:true
+					// },
+					success: function (isdat) {
+						console.log(isdat)
+						window.parent.layer.closeAll()
+						window.parent.table.reloadData('demo', {})
+					}
+				})
 
+			})
+	$(".closeLayer").click(function () {
+				console.log("修改")
+				window.parent.layer.closeAll()
+			})
 </script>
 </body>
 </html>
