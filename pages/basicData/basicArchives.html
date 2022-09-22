@@ -20,27 +20,26 @@
 			<div class="layui-form-item">
 
 				<div class="layui-inline">
-				    <label class="layui-form-label">档案编号:</label>
+				    <label class="layui-form-label">操作人:</label>
 				    <div class="layui-input-block" style="width: 150px;">
-				     	<input type="text" name="title" placeholder="请输入档案编号" autocomplete="off" class="layui-input">
+				     	<input type="text" name="title" placeholder="请输入操作人" autocomplete="off" class="layui-input" id="reinput1">
 				    </div>
-				    
 			    </div>
 
 			    <div class="layui-inline">
 				    <label class="layui-form-label" >档案名称:</label>
 				    <div class="layui-input-block" style="width: 150px;">
-				     	<input type="text" name="title" placeholder="请输入档案名称" autocomplete="off" class="layui-input">
+				     	<input type="text" name="title" placeholder="请输入档案名称" autocomplete="off" class="layui-input" id="reinput2">
 				    </div>
 			    </div>
 
 				<!-- 查询按钮组 -->
 			    <div class="layui-inline">
-					<button type="button" class="layui-btn btnQuery">
+					<button type="button" class="layui-btn btnQuery" id="look">
 						<i class="layui-icon">&#xe615;</i> 查询
 					</button>
 
-					<button type="button" class="layui-btn btnOther">
+					<button type="button" class="layui-btn btnOther" >
 						<i class="layui-icon">&#x1002;</i> 重置
 					</button>
 
@@ -53,12 +52,7 @@
 
 			<!-- 隐藏其它查询条件 -->
 			<div id="hQuery" class="layui-form-item" style="display: none;">
-			    <div class="layui-inline">
-				    <label class="layui-form-label">操作人:</label>
-				    <div class="layui-input-block" style="width: 150px;">
-				     	<input type="text" name="title" placeholder="请输入操作人" autocomplete="off" class="layui-input">
-				    </div>
-			    </div>
+			    
 
 			    <div class="layui-inline">
 			        <label class="layui-form-label" >起始时间:</label>
@@ -98,9 +92,11 @@
 <script type="text/javascript" src="../../custom/jquery.min.js"></script>
 <script type="text/javascript" src="../../layui/layui.js"></script>
 <script type="text/javascript">     
-var table = null
+	var table = null
    var layer = null
    var layerpage =null
+   var ids = $("#request1").val();
+   
 layui.use(['laypage', 'layer'], function(){
 	   laypage = layui.laypage
 	  layer = layui.layer;
@@ -116,8 +112,8 @@ layui.use(['laypage', 'layer'], function(){
        }
      });
 });
- layui.use('table',function(){
-     	var table = layui.table;
+
+	function inittable (){
      	table.render({
      		elem :'#test'
      		,url : 'http://175.178.44.54:12307/basBasicArchives'
@@ -146,7 +142,11 @@ layui.use(['laypage', 'layer'], function(){
      		,page : true
      		,limit : 6,	
      	}); 
+		}
      	
+		layui.use('table',function(){
+		 	table = layui.table;
+		 	inittable();
 		table.on('tool(tests)', function (obj) { // 注：test 是 table 原始标签的属性 lay-filter="对应的值"
 						console.log("下面是OBJ")
 						rowData = obj.data
@@ -162,10 +162,41 @@ layui.use(['laypage', 'layer'], function(){
 							  //skin: 'layui-layer-rim', //加上边框
 							  area: ['980px', '440px'], //宽高
 							  content: 'basicArchives_list.html'
-							});
+							})
 						}
-					});
-   });
+					}); 
+								}); 
+   
+   $('#look').click(function () {
+   				let ids = $("#reinput1").val()
+				let idss = $("#reinput2").val()
+   				if(ids==""){
+   					initTable();
+   				}else{
+   					table.reload("test", {
+   						url:"http://175.178.44.54:12307/basBasicArchives/",
+   						where:{
+   							empName:ids,
+							name:idss
+   						},
+						parseData:function(res) {
+							return {
+								"code": res.status,
+								"msg": res.msg,
+								"count": res.data.total,
+								"data": res.data.records
+							}
+						},
+   						success:function(isdat){
+   							if(isdat.status==200){
+   								console.log("重载")
+   							}
+   						}
+   					
+   					})
+   				}
+   			});
+   
 
 
 
@@ -181,6 +212,13 @@ layui.use('table', function(){
 });
 
 $(function(){
+	//清空
+	$('#restart').click(function(){
+		$('#reinput1').val('')
+		$('#reinput2').val('')
+		$('#reinput3').val('')
+	});
+	
 	//显示、隐藏剩余的查询条件
 	$('#btnMore').click(function(){
 		$("#hQuery").toggle();

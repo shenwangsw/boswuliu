@@ -22,33 +22,20 @@
 				<div class="layui-inline">
 				    <label class="layui-form-label">省份:</label>
 				    <div class="layui-input-block" style="width: 150px;">
-				     	<select name="city" lay-verify="required">
-				        	<option value=""></option>
-				        	<option value="0">全部</option>
-				        	<option value="1">湖南</option>
-				        	<option value="2">湖北</option>
-				        	<option value="3">广东</option>
-				      	</select>
+				     	<input type="text" name="title" placeholder="请输入省份" autocomplete="off" class="layui-input" id="reinput1">
 				    </div>
 			    </div>
 
 			    <div class="layui-inline">
 				    <label class="layui-form-label" >城市:</label>
 				    <div class="layui-input-block" style="width: 150px;">
-				     	<select name="city" lay-verify="required">
-				        	<option value=""></option>
-				        	<option value="0">长沙</option>
-				        	<option value="1">岳阳</option>
-				        	<option value="2">株洲</option>
-				        	<option value="3">深圳</option>
-				        	<option value="4">广州</option>
-				      	</select>
+				     	<input type="text" name="title" placeholder="请输入城市" autocomplete="off" class="layui-input" id="reinput2">
 				    </div>
 			    </div>
 
 				<!-- 查询按钮组 -->
 			    <div class="layui-inline">
-					<button type="button" class="layui-btn btnQuery">
+					<button type="button" class="layui-btn btnQuery" id="look">
 						<i class="layui-icon">&#xe615;</i> 查询
 					</button>
 
@@ -69,26 +56,7 @@
 				<div class="layui-inline">
 				    <label class="layui-form-label">区县:</label>
 				    <div class="layui-input-block" style="width: 150px;">
-				     	<select name="city" lay-verify="required">
-				        	<option value=""></option>
-				        	<option value="0">长沙县</option>
-				        	<option value="1">望城县</option>
-				        	<option value="2">宁乡县</option>
-				      	</select>
-				    </div>
-			    </div>
-
-			    <div class="layui-inline">
-				    <label class="layui-form-label">简码:</label>
-				    <div class="layui-input-block" style="width: 150px;">
-				     	<input type="text" name="title" placeholder="请输入简码" autocomplete="off" class="layui-input">
-				    </div>
-			    </div>
-
-			    <div class="layui-inline">
-				    <label class="layui-form-label">城市编码:</label>
-				    <div class="layui-input-block" style="width: 150px;">
-				     	<input type="text" name="title" placeholder="请输入城市编码" autocomplete="off" class="layui-input">
+				     	<input type="text" name="title" placeholder="请输入区县" autocomplete="off" class="layui-input" id="reinput3">
 				    </div>
 			    </div>
 			</div>
@@ -115,8 +83,7 @@
 <script type="text/javascript" src="../../layer/layer.js"></script>
 <script type="text/javascript" src="../../layui/layui.js"></script>
 <script type="text/javascript">     
-
-var table = null
+			  var table = null
 			  var layer = null
 			  
 			  layui.use(['laypage', 'layer'], function(){
@@ -135,11 +102,10 @@ var table = null
 			       });
 			  });
 
-layui.use('table',function(){
-	    	var table = layui.table;
+		function inittable (){
 	    	table.render({
 	    		elem :'#test'
-	    		,url : 'http://175.178.44.54:12307//basArea'
+	    		,url : 'http://175.178.44.54:12307/basArea'
 				,parseData:function(res) {
 					console.log(res.data.records)
 					return {
@@ -151,15 +117,15 @@ layui.use('table',function(){
 				}
 	    		,cols:[[
 	  			{field: 'id',width:100, title:'序号'}
-	    		,{field: 'county',width:130, title:'省'}
+	    		,{field: 'province',width:130, title:'省'}
 	    		,{field: 'city',width:128, title:'市'}
 	    		,{field: 'county',width:100, title:'区'}
-	  			,{field: 'postalcode',width:120, title:'邮政编码'}
-	  			,{field: 'simplecode',width:90, title:'简码'}
-				,{field: 'citycode',width:135, title:'城市编码'}
+	  			,{field: 'postalCode',width:120, title:'邮政编码'}
+	  			,{field: 'simpleCode',width:90, title:'简码'}
+				,{field: 'cityCode',width:135, title:'城市编码'}
 				,{field: 'empName',width:100, title:'操作人员'}
 				,{field: 'unitName',width:100, title:'操作单位'}
-				,{field: 'operationtime',width:100, title:'操作时间'}
+				,{field: 'operationTime',width:100, title:'操作时间'}
 	  			,{width:175, title:'操作', toolbar:"#btn"}
 	    		]],
 				response: {
@@ -168,7 +134,11 @@ layui.use('table',function(){
 	    		,page : true
 	    		,limit : 6,	
 	    	}); 
-	    	
+			}
+			    	
+			layui.use('table',function(){
+			 	table = layui.table;
+			 	inittable();
 			table.on('tool(tests)', function (obj) { // 注：test 是 table 原始标签的属性 lay-filter="对应的值"
 							console.log("下面是OBJ")
 							rowData = obj.data
@@ -180,10 +150,21 @@ layui.use('table',function(){
 								//do somehing
 							} else if (layEvent === 'delete') { //删除
 								layer.confirm('确定删除吗？', function (index) {
-									table.reloadData(id, {
-									  scrollPos: 'fixed'  // 保持滚动条位置不变 - v2.7.3 新增
-									});
-									
+									layer.confirm('确定删除吗？', function (index) {
+											$.ajax({
+												method:"delete",
+												url:"http://175.178.44.54:12307/basArea/"+data.id,
+												contentType:"application/json",
+												dataType:"json",
+												success:function(isdat){
+													if(isdat.status==200){
+														layer.colseAll()
+														inittable();
+													}
+												}
+											
+									})
+									})
 								});
 							} else if (layEvent === 'edit') { //编辑
 								console.log("编辑")
@@ -194,13 +175,42 @@ layui.use('table',function(){
 								area: ['690px', '340px'], //宽高
 								content: 'sysMenu_edit.html'
 							});
-								// table.reloadData(id, {
-								//   scrollPos: 'fixed'  // 保持滚动条位置不变 - v2.7.3 新增
-								// });
 							}
 						});
-	  	
 	  });
+	  
+	  
+	 $('#look').click(function(){
+	  				let sheng = $("#reinput1").val()
+	  				let city = $("#reinput2").val()
+					let qu = $("#reinput3").val()
+	  				if(sheng == ""){
+	  					initTable();
+	  				}else{
+	  					table.reload("test", {
+	  						url:"http://175.178.44.54:12307/basArea/",
+	  						where:{
+	  							province:sheng
+	  						},
+	  						parseData:function(res) {
+	  							return {
+	  								"code": res.status,
+	  								"msg": res.msg,
+	  								"count": res.data.total,
+	  								"data": res.data.records
+	  							}
+	  						},
+	  						success:function(isdat){
+	  							if(isdat.status==200){
+	  								console.log("重载")
+	  							}
+	  						}
+	  					
+	  					})
+	  				}
+	  			});
+
+	  
 
 //加载'form'模块，使checkbox、select、radio初始化
 layui.use('form', function(){

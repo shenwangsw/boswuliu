@@ -22,22 +22,20 @@
 						<div class="layui-inline">
 							<label class="layui-form-label">员工工号:</label>
 							<div class="layui-input-block" style="width: 150px;">
-								<input type="text" name="title" placeholder="请输入员工工号" autocomplete="off"
-									class="layui-input">
+								<input type="text" name="title" placeholder="请输入员工工号" autocomplete="off" class="layui-input" id="reinput1">
 							</div>
 						</div>
 
 						<div class="layui-inline">
 							<label class="layui-form-label">员工名称:</label>
 							<div class="layui-input-block" style="width: 150px;">
-								<input type="text" name="title" placeholder="请输入员工名称" autocomplete="off"
-									class="layui-input">
+								<input type="text" name="title" placeholder="请输入员工名称" autocomplete="off" class="layui-input" id="reinput2">
 							</div>
 						</div>
 
 						<!-- 查询按钮组 -->
 						<div class="layui-inline">
-							<button type="button" class="layui-btn btnQuery">
+							<button type="button" class="layui-btn btnQuery"  id="look>
 								<i class="layui-icon">&#xe615;</i> 查询
 							</button>
 
@@ -119,7 +117,8 @@
 			
 			layui.use('table', function() {
 				var table = layui.table;
-
+			
+			 function inittable (){
 				table.render({
 					elem: '#test',
 					url: 'http://175.178.44.54:12307/basSubstitute',
@@ -195,6 +194,10 @@
 						}
 					}
 				});
+				}
+				layui.use('table',function(){
+				 	table = layui.table;
+				 	inittable();
 				table.on('tool(tests)', function (obj) { // 注：test 是 table 原始标签的属性 lay-filter="对应的值"
 								console.log("下面是OBJ")
 								rowData = obj.data
@@ -203,13 +206,26 @@
 								var tr = obj.tr; //获得当前行 tr 的 DOM 对象（如果有的话）
 								console.log(layEvent)
 								if (layEvent === 'detail') { //查看
-									//do somehing
+									
 								} else if (layEvent === 'delete') { //删除
 									layer.confirm('确定删除吗？', function (index) {
-										table.reloadData(id, {
-										  scrollPos: 'fixed'  // 保持滚动条位置不变 - v2.7.3 新增
-										});
-										
+												$.ajax({
+													method:"delete",
+													url:"http://175.178.44.54:12307/basSubstitute/"+data.id,
+													contentType:"application/json",
+													dataType:"json",
+													
+													// crossDomain:true,
+													// xhrFields:{
+													// 	withCredentials:true
+													// },
+													success:function(isdat){
+														if(isdat.status==200){
+															layer.closeAll()
+															inittable();
+														}
+													}
+										})
 									});
 								} else if (layEvent === 'edit') { //编辑
 									console.log("编辑")
@@ -225,7 +241,38 @@
 									// });
 								}
 							});
+							});
 			});
+			
+			$('#look').click(function () {
+							let human = $("#reinput1").val()
+							let huamans = $("#reinput2").val()
+							if(human==""){
+								initTable();
+							}else{
+								table.reload("test", {
+									url:"http://175.178.44.54:12307/basSubstitute/",
+									where:{
+										name:human,
+										empname:huamans		
+									},
+									parseData:function(res) {
+										return {
+											"code": res.status,
+											"msg": res.msg,
+											"count": res.data.total,
+											"data": res.data.records
+										}
+									},
+									success:function(isdat){
+										if(isdat.status==200){
+											console.log("重载")
+										}
+									}
+								
+								})
+							}
+						});
 			
 
 			//加载'form'模块，使checkbox、select、radio初始化

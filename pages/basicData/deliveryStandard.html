@@ -22,7 +22,7 @@
 				<div class="layui-inline">
 				    <label class="layui-form-label">标准名称:</label>
 				    <div class="layui-input-block" style="width: 150px;">
-				     	<input type="text" name="title" placeholder="请输入标准名称" autocomplete="off" class="layui-input" id="reinput1">
+				     	<input type="text" name="title" placeholder="请输入" autocomplete="off" class="layui-input" id="reinput1">
 				    </div>
 				    
 			    </div>
@@ -36,7 +36,7 @@
 
 				<!-- 查询按钮组 -->
 			    <div class="layui-inline">
-					<button type="button" class="layui-btn btnQuery" id="detail">
+					<button type="button" class="layui-btn btnQuery" id="look">
 						<i class="layui-icon">&#xe615;</i> 查询
 					</button>
 
@@ -95,7 +95,7 @@
 			</div>
 
 			<!-- 数据表格 -->
-			<table id="test" class="layui-table" lay-filter="tests">
+			<table id="test" class="layui-table" lay-filter="tests" >
 				<div style="display: none;" id="btn">
 					<button type="button" class="layui-btn layui-btn-primary layui-btn-xs"  lay-event="edit" id="opUpdate">编辑</button>
 					<button type="button" class="layui-btn layui-btn-primary layui-btn-xs"  lay-event="delete" id="opDelete">删除</button>
@@ -108,8 +108,8 @@
 <script type="text/javascript" src="../../custom/jquery.min.js"></script>
 <script type="text/javascript" src="../../layer/layer.js"></script>
 <script type="text/javascript" src="../../layui/layui.js"></script>
-
 <script type="text/javascript">  
+
    var table = null
    var layer = null
    
@@ -128,41 +128,40 @@
           }
         });
    });
-   
+   function inittable (){
+	   table.render({
+	   	elem :'#test'
+	   	,url : 'http://175.178.44.54:12307/basDeliveryStandard/'
+	   	,parseData:function(res) {
+	   		console.log(res.data.records)
+	   		return {
+	   			"code": res.status,
+	   			"msg": res.msg,
+	   			"count": res.data.total,
+	   			"data": res.data.records
+	   		}
+	   	}
+	   	,cols:[[
+	   	{field: 'id',width:100, title:'序号'}
+	   	,{field: 'name',width:200, title:'收派标准名称'}
+	   	,{field: 'minWeight',width:135, title:'最小重量'}
+	   	,{field: 'maxWeight',width:135, title:'最大重量'}
+	   	,{field: 'empName',width:135, title:'操作人员'}
+	   	,{field: 'unitName',width:135, title:'操作单位'}
+	   	,{field: 'operationTime',width:310, title:'操作时间'}
+	   	,{width:135, title:'操作', toolbar:"#btn"}
+	   	]],
+	   	response: {
+	   				statusCode: 200 //成功的状态码，默认：0
+	   			}
+	   	,page : true
+	   	,limit : 6	
+	   }); 
+   }
     layui.use('table',function(){
      	table = layui.table;
+     	inittable();
      	
-     	table.render({
-     		elem :'#test'
-     		,url : 'http://175.178.44.54:12307/basDeliveryStandard'
-			,parseData:function(res) {
-				console.log(res.data.records)
-				return {
-					"code": res.status,
-					"msg": res.msg,
-					"count": res.data.total,
-					"data": res.data.records
-				}
-			}
-     		,cols:[[
-   			{field: 'id',width:100, title:'序号'}
-     		,{field: 'name',width:200, title:'收派标准名称'}
-     		,{field: 'minWeight',width:135, title:'最小重量'}
-     		,{field: 'maxWeight',width:135, title:'最大重量'}
-   			,{field: 'empName',width:135, title:'操作人员'}
-   			,{field: 'unitName',width:135, title:'操作单位'}
-   			,{field: 'operationTime',width:310, title:'操作时间'}
-   			,{width:135, title:'操作', toolbar:"#btn"}
-     		]],
-			response: {
-						statusCode: 200 //成功的状态码，默认：0
-					}
-     		,page : true
-     		,limit : 6,
-			done:function (res, curr, count) {
-			    console.log('a')      
-			}		
-     	}); 
      	table.on('tool(tests)', function (obj) { // 注：test 是 table 原始标签的属性 lay-filter="对应的值"
      					console.log("下面是OBJ")
      					rowData = obj.data
@@ -170,14 +169,21 @@
      					var layEvent = obj.event; //获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
      					var tr = obj.tr; //获得当前行 tr 的 DOM 对象（如果有的话）
 						console.log(layEvent)
-     					if (layEvent === 'detail') { //查看
-     						//do somehing
-     					} else if (layEvent === 'delete') { //删除
-     						layer.confirm('确定删除吗？', function (index) {
-								
-     							table.reloadData("#test",{});
-     							
-     						});
+     					if (layEvent === 'delete') { //删除
+     						layer.confirm('确定删除吗？', function (index) {	
+									$.ajax({
+										method:"delete",
+										url:"http://175.178.44.54:12307/basDeliveryStandard/"+data.id,
+										contentType:"application/json",
+										dataType:"json",
+										success:function(isdat){
+											if(isdat.status==200){
+												layer.closeAll()
+												inittable();
+											}
+										}
+     						})
+							})
      					} else if (layEvent === 'edit') { //编辑
      						console.log("编辑")
      						layer.open({
@@ -187,12 +193,40 @@
      						area: ['690px', '340px'], //宽高
      						content: 'sysMenu_edit.html'
      					});
-     						// table.reloadData(id, {
-     						//   scrollPos: 'fixed'  // 保持滚动条位置不变 - v2.7.3 新增
-     						// });
      					}
      				});
    });
+   
+   
+   $('#look').click(function () {
+   				let human = $("#reinput1").val()
+				let huamans = $("#reinput2").val()
+   				if(human==""){
+   					initTable();
+   				}else{
+   					table.reload("test", {
+   						url:"http://175.178.44.54:12307/basDeliveryStandard/",
+   						where:{
+   							name:human,
+							empname:huamans		
+   						},
+						parseData:function(res) {
+							return {
+								"code": res.status,
+								"msg": res.msg,
+								"count": res.data.total,
+								"data": res.data.records
+							}
+						},
+   						success:function(isdat){
+   							if(isdat.status==200){
+   								console.log("重载")
+   							}
+   						}
+   					
+   					})
+   				}
+   			});
 
 
 //加载'form'模块，使checkbox、select、radio初始化

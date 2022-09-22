@@ -33,6 +33,13 @@
 				      	</select>
 				    </div>
 			    </div>
+				
+				<div class="layui-inline">
+				    <label class="layui-form-label">序号:</label>
+				    <div class="layui-input-block" style="width: 150px;">
+				     	<input type="text" name="title" placeholder="请输入序号" autocomplete="off" class="layui-input">
+				    </div>
+				</div>
 
 			    <div class="layui-inline">
 				    <label class="layui-form-label" >线路类型:</label>
@@ -50,7 +57,7 @@
 
 				<!-- 查询按钮组 -->
 			    <div class="layui-inline">
-					<button type="button" class="layui-btn btnQuery">
+					<button type="button" class="layui-btn btnQuery" id="look">
 						<i class="layui-icon">&#xe615;</i> 查询
 					</button>
 
@@ -82,12 +89,6 @@
 				    </div>
 			    </div>
 
-			    <div class="layui-inline">
-				    <label class="layui-form-label">承运商:</label>
-				    <div class="layui-input-block" style="width: 150px;">
-				     	<input type="text" name="title" placeholder="请输入承运商" autocomplete="off" class="layui-input">
-				    </div>
-			    </div>
 			
 			</div>
 
@@ -114,7 +115,7 @@
 <script type="text/javascript" src="../../layui/layui.js"></script>
 <script type="text/javascript"> 
 
- var table = null
+	var table = null
    var layer = null
    
    layui.use(['laypage', 'layer'], function(){
@@ -133,8 +134,7 @@
         });
    });
  
-	layui.use('table',function(){
-	    	var table = layui.table;
+	function inittable (){
 	    	table.render({
 	    		elem :'#test'
 	    		,url : 'http://175.178.44.54:12307/basShuttleBus'
@@ -165,8 +165,12 @@
 							statusCode: 200 //成功的状态码，默认：0
 						}
 	    		,page : true
-	    		,limit : 6,	
+	    		,limit : 6
 	    	}); 
+		}
+			layui.use('table',function(){
+			 	table = layui.table;
+			 	inittable();
 			table.on('tool(tests)', function (obj) { // 注：test 是 table 原始标签的属性 lay-filter="对应的值"
 							console.log("下面是OBJ")
 							rowData = obj.data
@@ -178,10 +182,26 @@
 								//do somehing
 							} else if (layEvent === 'delete') { //删除
 								layer.confirm('确定删除吗？', function (index) {
-									table.reloadData(id, {
-									  scrollPos: 'fixed'  // 保持滚动条位置不变 - v2.7.3 新增
-									});
-									
+									layer.confirm('确定删除吗？', function (index) {
+											$.ajax({
+												method:"delete",
+												url:"http://175.178.44.54:12307/basShuttleBus/"+data.id,
+												contentType:"application/json",
+												dataType:"json",
+												
+												// crossDomain:true,
+												// xhrFields:{
+												// 	withCredentials:true
+												// },
+												success:function(isdat){
+													if(isdat.status==200){
+														layer.closeAll()
+														inittable();
+													}
+												}
+											
+									})
+									})
 								});
 							} else if (layEvent === 'edit') { //编辑
 								console.log("编辑")
@@ -198,6 +218,27 @@
 							}
 						});
 	  });
+	  
+	  $('#look').click(function () {
+		  alert(111)
+	  				let ids = $(".reinput1").val()
+	  				if(ids==""){
+	  					initTable();
+	  				}else{
+	  					table.reloadData("deom", {
+	  						url:"http://175.178.44.54:12307/basDeliveryStandard/",
+	  						where:{
+	  							name:ids
+	  						},
+	  						success:function(isdat){
+	  							if(isdat.status==200){
+	  								console.log("重载")
+	  							}
+	  						}
+	  					
+	  					})
+	  				}
+	  			});
 
 
 //加载'form'模块，使checkbox、select、radio初始化
