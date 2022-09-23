@@ -163,14 +163,13 @@
      	inittable();
      	
      	table.on('tool(tests)', function (obj) { // 注：test 是 table 原始标签的属性 lay-filter="对应的值"
-     					console.log("下面是OBJ")
      					rowData = obj.data
      					var data = obj.data; //获得当前行数据
      					var layEvent = obj.event; //获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
      					var tr = obj.tr; //获得当前行 tr 的 DOM 对象（如果有的话）
 						console.log(layEvent)
      					if (layEvent === 'delete') { //删除
-     						layer.confirm('确定删除吗？', function (index) {	
+     						layer.confirm('确定删除吗？', function (index) {
 									$.ajax({
 										method:"delete",
 										url:"http://175.178.44.54:12307/basDeliveryStandard/"+data.id,
@@ -182,7 +181,7 @@
 												inittable();
 											}
 										}
-     						})
+									})
 							})
      					} else if (layEvent === 'edit') { //编辑
      						console.log("编辑")
